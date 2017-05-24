@@ -1,0 +1,88 @@
+<h1 id="main-headers">Track your Wines!</h1>
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-phone">
+    </div>
+      <div class="mdl-cell mdl-cell--5-col mdl-cell--5-col-tablet mdl-cell--1-phone">
+      <h2 id="main-headers">Wines I want to drink!</h2>
+    <!-- CREATES AN DOM FOR EACH OBJECT IN THE TABLE burgers -->
+    {{#each wines}}
+      {{#unless this.drinken}}
+          <div class="wide-card mdl-card mdl-shadow--8dp">
+              <div class="mdl-card__title">
+                 <h2 class="mdl-card__title-text">{{this.wine}}</h2>
+              </div>
+              <div class="mdl-card__supporting-text">
+              {{this.description}}
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <form action="/api/wines/{{this.id}}?_method=PUT" method="POST">
+                  <input type="hidden" name="drinken" value="true">
+                    <button type="submit" class ='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' id='submit-btn'> <i class="material-icons">local_bar</i></button>
+                </form>
+                <br>
+          <!-- THIS NEXT LINE REFERENCES THE PARTIAL AT FILE PATH wines/delete-wines.handlebars -->
+                {{> wines/delete-wines}}
+              </div>
+           </div>
+           <br>
+      {{/unless}}
+    {{/each}}
+    </div>
+    <div class="mdl-cell mdl-cell--5-col mdl-cell--5-col-tablet mdl-cell--1-phone">
+  <h2 id="main-headers">Wines I have drinken!</h2>
+    {{#each wines}}
+      {{#if this.drinken}}
+    <div class="wide-card mdl-card mdl-shadow--8dp">
+        <div class="mdl-card__title">
+           <h2 class="mdl-card__title-text">{{this.wine}}</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+        {{this.description}}
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+          <br>
+    <!-- THIS NEXT LINE REFERENCES THE PARTIAL AT FILE PATH burgers/delete-burgers.handlebars -->
+          {{> wines/delete-wines}}
+        </div>
+     </div>
+     <br>
+      {{/if}}
+    {{/each}}
+    </div>
+    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-phone">
+      </div>
+    <br>
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-phone">
+      <h2 id="main-headers">Add a Wine</h2>
+    </div>
+    <div class="wide-card mdl-card mdl-shadow--8dp">
+      <form role='form' class="create-update-form" action="/" method="POST">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="add-wine" name="wine">
+          <label class="mdl-textfield__label" for="wine-div">Wine Name...</label>
+        </div>
+         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="wine-description" name="description">
+          <label class="mdl-textfield__label" for="wine-div">Description...</label>
+        </div>
+        <div class="checkboxgroup">
+          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="eaten-no">
+            <input type="radio" id="eaten-no" class="mdl-radio__button " name="drinken" value="0">
+            <span class="mdl-radio__label">Not Drinken
+            </span>
+          </label>
+          <br>
+          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="eaten-yes">
+            <input type="radio" id="eaten-yes" class="mdl-radio__button " name="drinken" value="1">
+            <span class="mdl-radio__label">Drinken
+            </span>
+          </label>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+
+        <button type="submit" class ='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' id='submit-btn'> Submit </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
