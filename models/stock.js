@@ -1,16 +1,10 @@
 module.exports = function(sequelize, dataTypes) {
     var Stock = sequelize.define("Stock", {
-        wine: dataTypes.STRING,
-        description: dataTypes.STRING,
-        drinken: {
-            type: dataTypes.BOOLEAN,
-            validation: {
-                isNull: false,
-                defaultValue: false
-            }
-        }
+        currency: dataTypes.STRING,
+        priceUSD: dataTypes.DECIMAL,
+        priceBTC: dataTypes.DECIMAL,
     }, {
-        timestamps: false
+        timestamps: true
     })
-    return Wine;
+    return Stock;
 }

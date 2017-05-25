@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-yellow.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css" type="text/css" />
+    <title>Title</title>
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--drawer mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Title</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation -->
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="/">Home</a>
+                    <a class="mdl-navigation__link" href="/">Link</a>
+                </nav>
+            </div>
+        </header>
+        <!---        DRAWER         -->
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Title</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="/">Home</a>
+                <a class="mdl-navigation__link" href="/">Link</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content ">
+            <div class="page-content">
+                <h1 id="main-headers">Track your Coin</h1>
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-phone">
+                    </div>
+                    <div class="mdl-cell mdl-cell--5-col mdl-cell--5-col-tablet mdl-cell--1-phone">
+                        <h2 id="main-headers">Bitcoin</h2> {{#each stocks}}
+                        <div class="wide-card mdl-card mdl-shadow--8dp">
+                            <div class="mdl-card__title">
+                                <h2 class="mdl-card__title-text">{{this.currency}}</h2>
+                            </div>
+                            <div class="mdl-card__supporting-text">
+                                USD: ${{this.priceUSD}} BTC: ${{this.priceBTC}}
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <br>
+                            </div>
+                        </div>
+                        <br> {{/each}}
+                    </div>
+                </div>
+            </div>
+    </div>
+    </main>
+    </div>
+    <script type="text/javascript">
+    $(document).ready(function() {
+
+        $(".page-content").append("Hello");
+        var request = require("request");
+        var express = require("express");
+        var request = require("request");
+
+        graphIt();
+
+        function graphIt() {
+            request("https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,ETH,LTC,BTC", function(error, response, body) {
+                if (!error) {
+                    var jsonResponse = JSON.parse(body);
+                    console.log(jsonResponse)
+
+
+                } else {
+                    console.log("Error: ", error);
+                }
+            })
+
+
+
+            $.get("https://min-api.cryptocompare.com/data/price?fsym=USD&tsyms=BTC,ETH,EUR", function(data) {
+                console.log(data);
+            });
+
+        }
+
+
+        $.ajax({
+            url: "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,ETH,LTC,BTC",
+            context: document.body,
+            success: function() {
+                $(this).addClass("done");
+            }
+        });
+
+
+
+
+
+    })
+    </script>
+</body>
+
+</html>
