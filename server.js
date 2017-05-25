@@ -26,9 +26,33 @@ app.set("view engine", "handlebars");
 var routes = require("./controllers/stock_controller.js")
 app.use("/", routes);
 
+// will make ajax calls for currency info.  
+function bitCoinAjaxCall(){
+	var BTCprice;
+    var USDprice;
 
-db.sequelize.sync().then(function() {
-    app.listen(PORT, function() {
+    request("https://min-api.cryptocompare.com/data/price?fsym=USD&tsyms=BTC,ETH,EUR", function(err, res, body){
+    	//console.log(res);
+    	//console.log(body); 
+    	var parsedBody = JSON.parse(body); 
+    	console.log(parsedBody.BTC);
+    	BTCprice = parsedBody.BTC;
+    	
+    	request("https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,ETH,EUR", function(err, res, body){
+    		//console.log(res);
+    		//console.log(body);
+    		var parsedBody = JSON.parse(body); 
+    		console.log(parsedBody.USD);
+    		USDprice = parsedBody.USD;
+    		dbManager.addToCurrencyTable(BTCprice, USDprice); 
+    	}); 
+    });                
+}; 
+
+setInterval(bitCoinAjaxCall, 4000000);  
+// end of ajax call function 
+
+app.listen(PORT, function() {
         console.log(`App listening on PORT ${PORT}.`)
-    })
-})
+}); 
+
