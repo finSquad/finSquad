@@ -1,49 +1,57 @@
 // DEPENDENCIES
 // We require express so we can display to HTML
+var request = require("request")
+
 var express = require("express");
 // Router sets up 
 var router = express.Router();
 var db = require("../models");
-// Import the model (burger.js) to use its database functions.
-// var Wine = require("../models/wine.js");
 
 // Create all our routes and set up logic within those routes where required.
 
-router.get("/", function(req, res) {
-    db.Wine.findAll({}).then(function(data) {
+router.get("/", function(req, res) { 
+  
+    
+    db.Stock.findAll({}).then(function(data) {
+        console.log("get all")
+        console.log(data)
         var hbsObject = {
-            wines: data
+            stocks: data
         };
         res.render("index", hbsObject)
     });
 });
 
-router.get("/api/wines?", function(req, res) {
-    db.Wine.findAll({}).then(function(data) {
+router.get("/api/stocks?", function(req, res) {
+    db.Stock.findAll({}).then(function(data) {
         var hbsObject = {
-            wines: data
+            stocks: data
         };
         res.json(hbsObject)
     });
 });
 
 router.post("/", function(req, res) {
-    var newWine = req.body;
-    db.Wine.create({
-        wine: newWine.wine,
-        description: newWine.description,
-        drinken: newWine.drinken
+   
+    var newStock = req.body;
+    db.Stock.create({
+        currency: newStock.currency,
+        priceUSD: newStock.priceUSD,
+        priceBTC: newStock.priceBTC
     }).then(function() {
         res.redirect("/")
+
     })
+
 });
 
-router.put("/api/wines/:id", function(req, res) {
+router.put("/api/stocks/:id", function(req, res) {
     var id = req.params.id;
     console.log(req.params)
         // console.log(req.body.drinken)
-    db.Wine.update({
-        drinken: req.body.drinken
+    db.Stock.update({
+        priceUSD: newStock.priceUSD,
+        priceBTC: newStock.priceBTC
     }, {
         where: {
             id: id
@@ -53,9 +61,9 @@ router.put("/api/wines/:id", function(req, res) {
     });
 });
 
-router.delete("/api/wines/:id", function(req, res) {
+router.delete("/api/stocks/:id", function(req, res) {
     var id = req.params.id;
-    db.Wine.destroy({
+    db.Stock.destroy({
         where: {
             id: id
         }
