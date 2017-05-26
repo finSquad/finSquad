@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require("method-override");
 var request = require("request");
 var PORT = process.env.PORT || 8080;
-var db = require("./models")
+var dbManager = require("./models/dbManager.js");
 
 
 app.use(bodyParser.json());
@@ -49,7 +49,7 @@ function bitCoinAjaxCall(){
     });                
 }; 
 
-setInterval(bitCoinAjaxCall, 4000000);  
+setInterval(bitCoinAjaxCall, 1000);  
 // end of ajax call function 
 
 app.listen(PORT, function() {
