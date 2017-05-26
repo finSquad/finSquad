@@ -1,15 +1,26 @@
 // DEPENDENCIES
 // We require express so we can display to HTML
 var request = require("request")
-
+var path = require("path"); 
 var express = require("express");
 // Router sets up 
 var router = express.Router();
+
 var dbManager = require("../models/dbManager.js");
 
-router.get("/", function(req,res){
-    dbManager.getAllFriendsAndPost().then(); 
+router.get("/", function(req, res){
+    res.sendFile(path.join(__dirname,"../public/assets/graphtest.html")); 
+}); 
+
+router.get("/tblcurrency", function(req,res){
+    dbManager.getAll_tbl_currency(function(tableInfo){
+        
+        res.json(tableInfo); 
+    });
+    
 });
+
+
 // Create all our routes and set up logic within those routes where required.
 /*
 router.get("/", function(req, res) {  
