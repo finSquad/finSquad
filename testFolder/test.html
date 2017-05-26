@@ -8,79 +8,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenLite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TimelineLite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/CSSPlugin.min.js"></script>
+    <link rel="stylesheet" href="test.css">
+    
     <title>Don't test me Bih</title>
 </head>
 
 <body>
-    <style type="text/css">
-    html,
-    body {
-        height: 100%;
-    }
-    
-    .grid-container {
-        width: 100%;
-        height: 100%;
-        display: grid;
-        grid-template-areas: "top    top    top" "left   center right" "bottom bottom bottom";
-        grid-template-columns: 200px auto 300px;
-        grid-template-rows: 100px auto 150px;
-        grid-gap: 10px 10px;
-    }
-    
-    .grid-top {
-        grid-area: top;
-        background: #ddeaff;
-    }
-    
-    .grid-bottom {
-        grid-area: bottom;
-        background: #ddeaff;
-    }
-    
-    .grid-left {
-        grid-area: left;
-        background: #ddeaff;
-    }
-    
-    .grid-right {
-        grid-area: right;
-        background: #ddeaff;
-    }
-    
-    .grid-centre {
-        grid-area: center;
-    }
-    
-    .mdl-grid,
-    #graph {
-        overflow: auto;
-        background: #ddeaff;
-    }
-    
-    .mdl-card__actions {
-        display: flex;
-        box-sizing: border-box;
-        align-items: center;
-    }
-    
-    .mdl-card__actions > .mdl-button--icon {
-        margin-right: 5px;
-        margin-left: 5px;
-    }
-    </style>
+
     <div class="grid-container">
-        <div class="grid-top">Top</div>
+<!-- add navbar with fixed left van menu -->
+        <div class="grid-top">
+          Top
+        </div><!-- close top div -->
+
+
+       
+
         <div class="grid-left">Left</div>
-        <!-- Page center -->
+<!-- Page center -->
         <div class="grid-centre">
             <!-- FORM need to incorperate local stroage -->
             <div class="mdl-grid" id="postForm">
                 <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet graybox" id="title">
                     <form action="#">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="text4">
-                            <label class="mdl-textfield__label" for="text4">Tell your friends...</label>
+                            <input class="mdl-textfield__input" type="text" id="body">
+                            <label class="mdl-textfield__label" for="body">Tell your friends...</label>
                         </div>
                         <button id="submitPost" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored
                         mdl-js-ripple-effect
@@ -92,10 +45,14 @@
             </div>
             <!-- dynamic graph  -->
             <div id="graph"></div>
-        </div>
-        <!-- sidebar right -->
+        </div> <!-- close center div -->
+        
+
+
+
+<!-- sidebar right -->
         <div class="grid-right">
-            <div id="genPost" class="mdl-card__actions">
+            <div id="postContainer" class="mdl-card__actions">
                 <div class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--2-col-tablet mdl-shadow--2dp">
                     <div class="mdl-card__title">
                         <h1 class="mdl-card__title-text" id="timestamp">User name: post time</h1>

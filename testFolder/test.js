@@ -1,6 +1,11 @@
 $(document).ready(function(){
 
-//var postArr = [];
+var url = window.locations.search;
+
+
+var postArr = [];
+
+
 
 
 //updating post to push out older posts
@@ -19,6 +24,40 @@ tlPost = new TimelineLite();
 		}
 
 	});
+
+//grab post to append to array 
+var userPost = $("#body");
+var form = $("postForm");
+
+$(form).on("#submitPost", function handleFormSubmit(event){
+	event.preventDefault();
+
+	if (!userPost.val().trim === null){
+		return;
+	}
+
+	var newPost = {
+		body: userPost.val().trim()
+	}
+
+	console.log(newPost);
+
+	postArr.push(newPost);
+
+});
+
+
+//grab click listeners on friend posts 
+
+var postContainer = $("#postContainer");
+
+
+function getPosts(sidebar){
+	$.get("/", function)
+
+}
+
+
 
 });
 
