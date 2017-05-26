@@ -20,8 +20,8 @@ CREATE SCHEMA IF NOT EXISTS `facefin_db` ;
 CREATE TABLE IF NOT EXISTS `facefin_db`.`tblcurrency` (
   `id` INT(11) NOT NULL COMMENT 'id is concatinated with timestamp',
   `currencyType` VARCHAR(45) NOT NULL DEFAULT 'USD' COMMENT 'default current is USD but it can be different',
-  `currencyValue` FLOAT(10,2) NULL DEFAULT NULL,
-  `priceBTC` FLOAT(10,2) NULL DEFAULT NULL,
+  `USDprice` FLOAT(10,2) NULL DEFAULT NULL,
+  `BTCprice` FLOAT(10,5) NULL DEFAULT NULL,
   `tstamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`, `tstamp`))
 ENGINE = InnoDB
