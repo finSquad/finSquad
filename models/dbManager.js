@@ -7,7 +7,11 @@ var sqlConn = mysql.createConnection({
 	host: "localhost",
 	user: "zee",
 	password: "sesame", 
+<<<<<<< HEAD
 	database: "facefin_db"
+=======
+	database: "finsquad"
+>>>>>>> 3a67d90586ed76fd280f2daef0d3933a4975dade
 }); 
 sqlConn.connect(function(err){
 	if(err){

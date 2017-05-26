@@ -5,13 +5,14 @@ var request = require("request")
 var express = require("express");
 // Router sets up 
 var router = express.Router();
-var db = require("../models");
+var dbManager = require("../models/dbManager.js");
 
+router.get("/", function(req,res){
+    dbManager.getAllFriendsAndPost().then(); 
+});
 // Create all our routes and set up logic within those routes where required.
-
-router.get("/", function(req, res) { 
-  
-    
+/*
+router.get("/", function(req, res) {  
     db.Stock.findAll({}).then(function(data) {
         console.log("get all")
         console.log(data)
@@ -71,6 +72,6 @@ router.delete("/api/stocks/:id", function(req, res) {
         res.redirect("/")
     })
 });
-
+*/
 // Export routes for server.js to use.
 module.exports = router;
