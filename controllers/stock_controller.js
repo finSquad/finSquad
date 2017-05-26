@@ -5,7 +5,7 @@ var request = require("request")
 var express = require("express");
 // Router sets up 
 var router = express.Router();
-var db = require("../models");
+
 
 // Create all our routes and set up logic within those routes where required.
 
