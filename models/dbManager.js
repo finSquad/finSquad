@@ -7,7 +7,9 @@ var sqlConn = mysql.createConnection({
 	host: "localhost",
 	user: "zee",
 	password: "sesame", 
+
 	database: "facefin_db"
+
 }); 
 sqlConn.connect(function(err){
 	if(err){
@@ -25,6 +27,18 @@ var dbManager = {
 
 	}
 	*/
+	getAll_tbl_currency: function(CB){
+		var query = "SELECT * FROM tblcurrency;";
+		sqlConn.query(query, function(err ,result){
+			if(err){
+				console.log(err);
+			}
+			else{
+				CB(result); 
+			}
+		});  
+	}, 
+
 	addToCurrencyTable: function(BTCprice, USDprice){
 		var query = "INSERT INTO tblcurrency(BTCprice, USDprice) VALUES(?,?);";
 		sqlConn.query(query, [BTCprice, USDprice], function(err, result){

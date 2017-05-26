@@ -207,7 +207,13 @@
     var USDprice = 0;
 
     $(document).ready(function() {
-
+        function get_tblcurrency(){
+            $.get("/tblcurrency", function(data){
+               console.log("testing: " + data);  
+            })
+        }
+        get_tblcurrency(); 
+        /*
         function priceUSD() {
 
             $.get("https://min-api.cryptocompare.com/data/price?fsym=USD&tsyms=BTC,ETH,EUR", function(data) {
@@ -225,15 +231,17 @@
 
             });
         }
+        */
+
 
         var now = moment().format("X");
         var month = moment(JSON.stringify(now), "MM-YYYY");
         var hour = moment(JSON.stringify(now), "hh");
         var day = moment().format("MM-DD-YY");
-
+        /*
         priceUSD();
         priceBTC();
-
+        */
         // ************************************************************************************
 
 

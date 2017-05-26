@@ -49,10 +49,11 @@ function bitCoinAjaxCall(){
     });                
 }; 
 
-setInterval(bitCoinAjaxCall, 10000);  
+setInterval(bitCoinAjaxCall, 60000);  
 // end of ajax call function 
 
+ 
 app.listen(PORT, function() {
-        console.log(`App listening on PORT ${PORT}.`)
-}); 
+	console.log("App listening on PORT: "+PORT); 
+});
 
