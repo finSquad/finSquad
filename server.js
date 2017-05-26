@@ -49,7 +49,7 @@ function bitCoinAjaxCall(){
     });                
 }; 
 
-setInterval(bitCoinAjaxCall, 1000);  
+setInterval(bitCoinAjaxCall, 10000);  
 // end of ajax call function 
 
 app.listen(PORT, function() {
