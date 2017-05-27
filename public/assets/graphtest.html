@@ -69,8 +69,6 @@
     </main>
     </div>
     <script type="text/javascript">
-
-    
     var samplePrices = [{
         "id": 1,
         "BTCprice": 0.0004000,
@@ -184,35 +182,38 @@
     }]
 
     var chartPointArray = []
-
-    function createChartPoints() {
-        for (i = 0; i < samplePrices.length; i++) {
-            var dbTime = samplePrices[i].time.split(" ");
-            var date = dbTime[0].split("-");
-            var time = dbTime[1].split(":");
-            var timeArray = date.concat(time);
-
-            var chartPoint = {
-                time: timeArray,
-                price: samplePrices[i].USDprice
-            };
-            chartPointArray.push(chartPoint)
-        }
-        // console.log(chartPointArray)
-    }
-
-    createChartPoints()
-
     var BTCprice = 0;
     var USDprice = 0;
 
     $(document).ready(function() {
-        function get_tblcurrency(){
-            $.get("/tblcurrency", function(data){
-               console.log("testing: " + data);  
-            })
+
+        function get_tblcurrency() {
+            $.get("/tblcurrency", function(data) {
+                console.log(data);
+                createChartPoints(data);
+                // setInterval(get_tblcurrency(), 600000)
+            });
         }
-        get_tblcurrency(); 
+
+        get_tblcurrency();
+
+        function createChartPoints(data) {
+            console.log(data[0].tstamp)
+            for (i = 0; i < data.length; i++) {
+                var dbTime = data[i].tstamp.split("T");
+                var date = dbTime[0].split("-");
+                var time = dbTime[1].split(":").slice(0, -1);
+                var timeArray = date.concat(time);
+                var chartPoint = {
+                    time: timeArray,
+                    price: data[i].USDprice
+                };
+                chartPointArray.push(chartPoint)
+            }
+            console.log(timeArray)
+            console.log(chartPointArray)
+        }
+
         /*
         function priceUSD() {
 
@@ -256,18 +257,20 @@
             data.addColumn('number', 'BTC/USD');
             // data.addColumn('number', 'BTC');
 
-            for (i = 0; i < chartPointArray.length; i++){
+            for (i = 0; i < chartPointArray.length; i++) {
                 var newPoint = chartPointArray[i];
+                // console.log(newPoint)
 
                 data.addRows([
-                    [new Date(newPoint.time[0], newPoint.time[1] - 1, newPoint.time[2], newPoint.time[3], newPoint.time[4], newPoint.time[5]), newPoint.price]
-                    ])
+                    [new Date(newPoint.time[0], newPoint.time[1] - 1, newPoint.time[2], newPoint.time[3] - 7, newPoint.time[4]), newPoint.price]
+                ])
             }
 
             var options = {
                 hAxis: {
                     title: 'Time',
                     logScale: false
+
                 },
                 vAxis: {
                     title: 'Price (USD)',
@@ -297,9 +300,6 @@
 
 
     }
-
-
-    
     </script>
 </body>
 
