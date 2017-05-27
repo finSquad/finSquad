@@ -8,7 +8,6 @@ var sqlConn = mysql.createConnection({
 	user: "root",
 	password: "Lookatme!1", 
 	database: "facefin_db"
-
 }); 
 
 sqlConn.connect(function(err){
