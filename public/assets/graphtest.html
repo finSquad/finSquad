@@ -46,7 +46,35 @@
                     <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--6-phone">
                         <!-- ************************************************************************************** -->
                         <form>
-                            <!-- <button id="change">Submit</button> -->
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option1">
+                                <input type="radio" id="option1" name="time" class="mdl-radio__button" value="1 Year">
+                                <span class="mdl-radio__label">1 Year</span>
+                            </label>
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option2">
+                                <input type="radio" id="option2" name="time" class="mdl-radio__button" value="6 Months">
+                                <span class=" mdl-radio__label ">6 Months</span>
+                            </label>
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect " for="option3">
+                                <input type="radio" id="option3" name="time" class="mdl-radio__button" value="3 Months">
+                                <span class="mdl-radio__label">3 Months</span>
+                            </label>
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option4">
+                                <input type="radio" id="option4" name="time" class="mdl-radio__button" value="1 Month">
+                                <span class="mdl-radio__label">1 Month</span>
+                            </label>
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option5">
+                                <input type="radio" id="option5" name="time" class="mdl-radio__button" value="1 Week">
+                                <span class="mdl-radio__label">1 Week</span>
+                            </label>
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option6">
+                                <input type="radio" id="option6" name="time" class="mdl-radio__button" value="1 Day">
+                                <span class="mdl-radio__label">1 Day</span>
+                            </label>
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option7">
+                                <input type="radio" id="option7" name="time" class="mdl-radio__button" value="12 Hours">
+                                <span class="mdl-radio__label">12 Hours</span>
+                            </label>
+                            <button class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' id='survey-start-btn'> Submit </button>
                         </form>
                         <div id="chart_div" style="width: 900px; height: 500px"></div>
                         <!-- ************************************************************************************ -->
@@ -69,150 +97,36 @@
     </main>
     </div>
     <script type="text/javascript">
-
-    
-    var samplePrices = [{
-        "id": 1,
-        "BTCprice": 0.0004000,
-        "USDprice": 2474.88,
-        "time": "2017-05-25 14:02:40"
-    }, {
-        "id": 2,
-        "BTCprice": 0.0004000,
-        "USDprice": 2482.53,
-        "time": "2017-05-25 14:04:45"
-    }, {
-        "id": 3,
-        "BTCprice": 0.0004000,
-        "USDprice": 2482.81,
-        "time": "2017-05-25 14:05:06"
-    }, {
-        "id": 4,
-        "BTCprice": 0.0004000,
-        "USDprice": 2489.82,
-        "time": "2017-05-25 14:07:48"
-    }, {
-        "id": 5,
-        "BTCprice": 0.0004000,
-        "USDprice": 2489.82,
-        "time": "2017-05-25 14:07:49"
-    }, {
-        "id": 6,
-        "BTCprice": 0.0004000,
-        "USDprice": 2489.82,
-        "time": "2017-05-25 14:07:50"
-    }, {
-        "id": 7,
-        "BTCprice": 0.0004000,
-        "USDprice": 2489.78,
-        "time": "2017-05-25 14:07:51"
-    }, {
-        "id": 8,
-        "BTCprice": 0.0004000,
-        "USDprice": 2489.78,
-        "time": "2017-05-25 14:07:52"
-    }, {
-        "id": 9,
-        "BTCprice": 0.0004000,
-        "USDprice": 2489.46,
-        "time": "2017-05-25 14:07:55"
-    }, {
-        "id": 10,
-        "BTCprice": 0.0004000,
-        "USDprice": 2489.82,
-        "time": "2017-05-25 14:07:56"
-    }, {
-        "id": 11,
-        "BTCprice": 0.0004000,
-        "USDprice": 2489.78,
-        "time": "2017-05-25 14:07:57"
-    }, {
-        "id": 12,
-        "BTCprice": 0.0004000,
-        "USDprice": 2489.78,
-        "time": "2017-05-25 14:07:58"
-    }, {
-        "id": 13,
-        "BTCprice": 0.0004000,
-        "USDprice": 2489.78,
-        "time": "2017-05-25 14:07:59"
-    }, {
-        "id": 14,
-        "BTCprice": 0.0004000,
-        "USDprice": 2489.46,
-        "time": "2017-05-25 14:08:00"
-    }, {
-        "id": 15,
-        "BTCprice": 0.0004000,
-        "USDprice": 2486.79,
-        "time": "2017-05-25 14:08:03"
-    }, {
-        "id": 19,
-        "BTCprice": 0.0004000,
-        "USDprice": 2486.79,
-        "time": "2017-05-25 14:08:07"
-    }, {
-        "id": 20,
-        "BTCprice": 0.0004000,
-        "USDprice": 2487.08,
-        "time": "2017-05-25 14:08:08"
-    }, {
-        "id": 23,
-        "BTCprice": 0.0004000,
-        "USDprice": 2486.79,
-        "time": "2017-05-25 14:08:11"
-    }, {
-        "id": 24,
-        "BTCprice": 0.0004000,
-        "USDprice": 2488.08,
-        "time": "2017-05-25 14:08:24"
-    }, {
-        "id": 25,
-        "BTCprice": 0.0004000,
-        "USDprice": 2491.17,
-        "time": "2017-05-25 14:08:34"
-    }, {
-        "id": 26,
-        "BTCprice": 0.0004000,
-        "USDprice": 2488.85,
-        "time": "2017-05-25 14:08:44"
-    }, {
-        "id": 27,
-        "BTCprice": 0.0004000,
-        "USDprice": 2490.11,
-        "time": "2017-05-25 14:08:54"
-    }]
-
     var chartPointArray = []
-
-    function createChartPoints() {
-        for (i = 0; i < samplePrices.length; i++) {
-            var dbTime = samplePrices[i].time.split(" ");
-            var date = dbTime[0].split("-");
-            var time = dbTime[1].split(":");
-            var timeArray = date.concat(time);
-
-            var chartPoint = {
-                time: timeArray,
-                price: samplePrices[i].USDprice
-            };
-            chartPointArray.push(chartPoint)
-        }
-        // console.log(chartPointArray)
-    }
-
-    createChartPoints()
-
     var BTCprice = 0;
     var USDprice = 0;
 
     $(document).ready(function() {
-        function get_tblcurrency(){
-            $.get("/tblcurrency", function(data){
-               console.log("testing: " + data);  
-            })
+
+        function get_tblcurrency() {
+            $.get("/tblcurrency", function(data) {
+                createChartPoints(data);
+                // setInterval(get_tblcurrency(), 600000)
+            });
         }
-        get_tblcurrency(); 
+
+        get_tblcurrency();
+
+        function createChartPoints(data) {
+            for (i = 0; i < data.length; i++) {
+                var dbTime = data[i].tstamp.split("T");
+                var date = dbTime[0].split("-");
+                var time = dbTime[1].split(":").slice(0, -1);
+                var timeArray = date.concat(time);
+                var chartPoint = {
+                    time: timeArray,
+                    price: data[i].USDprice
+                };
+                chartPointArray.push(chartPoint)
+            }
+            // console.log(chartPointArray)
+        }
+
         /*
         function priceUSD() {
 
@@ -233,14 +147,16 @@
         }
         */
 
+        // priceUSD();
+        // priceBTC();
+
 
         var now = moment().format("X");
         var month = moment(JSON.stringify(now), "MM-YYYY");
         var hour = moment(JSON.stringify(now), "hh");
         var day = moment().format("MM-DD-YY");
         /*
-        priceUSD();
-        priceBTC();
+
         */
         // ************************************************************************************
 
@@ -256,18 +172,44 @@
             data.addColumn('number', 'BTC/USD');
             // data.addColumn('number', 'BTC');
 
-            for (i = 0; i < chartPointArray.length; i++){
+            for (i = 0; i < chartPointArray.length; i++) {
                 var newPoint = chartPointArray[i];
-
                 data.addRows([
-                    [new Date(newPoint.time[0], newPoint.time[1] - 1, newPoint.time[2], newPoint.time[3], newPoint.time[4], newPoint.time[5]), newPoint.price]
-                    ])
+                    [new Date(newPoint.time[0], newPoint.time[1] - 1, newPoint.time[2], newPoint.time[3] - 7, newPoint.time[4]), newPoint.price]
+                ])
             }
 
+            // format: 'MMM dd'             days
+            // format: ['HH:mm', 'ha']      hours
+            // format: ['hh:mm:ss a', 'ha'] hours
+            // format: ['HH:mm a Z', ':mm'] minutes
+            chartChange()
             var options = {
                 hAxis: {
                     title: 'Time',
-                    logScale: false
+                    logScale: false,
+                    // gridlines: {
+                    //     count: -1,
+                    //     units: {
+                    //         days: {
+                    //             format: ['MMM dd']
+                    //         },
+                    //         hours: {
+                    //             format: ['HH:mm', 'ha']
+                    //         },
+                    //     }
+                    // },
+                    // minorGridlines: {
+                    //     units: {
+                    //         hours: {
+                    //             format: ['hh:mm:ss a', 'ha']
+                    //         },
+                    //         minutes: {
+                    //             format: ['HH:mm a Z', ':mm']
+                    //         }
+                    //     }
+                    // }
+
                 },
                 vAxis: {
                     title: 'Price (USD)',
@@ -279,24 +221,55 @@
 
             var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
             chart.draw(data, options);
+
+        }
+
+        function chartChange() {
+            $("input").click(function() {
+                var selected = $(this).attr("value");
+
+                switch (selected) {
+                    case "1 Year":
+                        console.log(selected)
+                        break;
+                    case "6 Months":
+                        console.log(selected)
+                        break;
+                    case "3 Months":
+                        console.log(selected)
+                        break;
+                    case "1 Month":
+                        console.log(selected)
+                        break;
+                    case "1 Week":
+                        console.log(selected)
+                        break;
+                    case "1 day":
+                        console.log(selected)
+                        break;
+                    case "12 Hours":
+                        console.log(selected)
+                        break;
+                    default:
+                        // function(){
+
+                        // }
+
+                }
+            })
         }
 
         // $("#change").onclick = function() {
         //     // If the format option matches, change it to the new option,
         //     // if not, reset it to the original format.
-        //     options.hAxis.format === 'M/d/yy' ?
-        //         options.hAxis.format = 'MMM dd, yyyy' :
-        //         options.hAxis.format = 'M/d/yy';
+        // options.hAxis.format === 'M/d/yy' ?
+        //     options.hAxis.format = 'MMM dd, yyyy' :
+        //     options.hAxis.format = 'M/d/yy';
 
-        //     chart.draw(data, options);
+        // chart.draw(data, options);
         // };
+
     })
-
-
-    function createRows() {
-
-
-    }
     </script>
 </body>
 

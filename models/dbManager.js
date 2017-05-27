@@ -5,18 +5,18 @@ var mysql = require("mysql");
 var sqlConn = mysql.createConnection({
 	port: 3306,
 	host: "localhost",
-	user: "zee",
-	password: "sesame", 
-
+	user: "root",
+	password: "Lookatme!1", 
 	database: "facefin_db"
-
 }); 
+
 sqlConn.connect(function(err){
 	if(err){
-		console.log(err); 
+		// console.log(err); 
 	}
 	console.log("sql connection is :" + sqlConn.threadId); 
 }); 
+
 // Create dbManager to manage database. 
 var dbManager = {
 	/*
@@ -31,7 +31,7 @@ var dbManager = {
 		var query = "SELECT * FROM tblcurrency;";
 		sqlConn.query(query, function(err ,result){
 			if(err){
-				console.log(err);
+				// console.log(err);
 			}
 			else{
 				CB(result); 
@@ -46,7 +46,7 @@ var dbManager = {
 				console.log(err);
 			}
 			else{
-				console.log(result); 
+				// console.log(result); 
 			}
 		}); 
 	}
