@@ -30,10 +30,10 @@ app.use("/", routes);
 function bitCoinAjaxCall(){
 	var BTCprice;
     var USDprice;
-
+    var dateNow;
     request("https://min-api.cryptocompare.com/data/price?fsym=USD&tsyms=BTC,ETH,EUR", function(err, res, body){
     	//console.log(res);
-    	//console.log(body); 
+    	console.log(body); 
     	var parsedBody = JSON.parse(body); 
     	console.log(parsedBody.BTC);
     	BTCprice = parsedBody.BTC;
@@ -44,12 +44,14 @@ function bitCoinAjaxCall(){
     		var parsedBody = JSON.parse(body); 
     		console.log(parsedBody.USD);
     		USDprice = parsedBody.USD;
-    		dbManager.addToCurrencyTable(BTCprice, USDprice); 
+            dateNow = new Date(year, month[, date[, hours[, minutes[, seconds[, milliseconds]]]]]);
+    		console.log(dateNow);
+            dbManager.addToCurrencyTable(BTCprice, USDprice); 
     	}); 
     });                
 }; 
 
-setInterval(bitCoinAjaxCall, 60000);  
+setInterval(bitCoinAjaxCall, 1000);  
 // end of ajax call function 
 
  
