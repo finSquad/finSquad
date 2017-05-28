@@ -39,9 +39,9 @@ var dbManager = {
 		});  
 	}, 
 
-	addToCurrencyTable: function(BTCprice, USDprice){
-		var query = "INSERT INTO tblcurrency(BTCprice, USDprice) VALUES(?,?);";
-		sqlConn.query(query, [BTCprice, USDprice], function(err, result){
+	addToCurrencyTable: function(BTCprice, USDprice, moment_tstamp){
+		var query = "INSERT INTO tblcurrency(BTCprice, USDprice, moment_tstamp) VALUES(?,?,?);";
+		sqlConn.query(query, [BTCprice, USDprice, moment_tstamp], function(err, result){
 			if(err){
 				console.log(err);
 			}

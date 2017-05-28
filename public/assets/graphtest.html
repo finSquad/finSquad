@@ -45,37 +45,41 @@
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--6-phone">
                         <!-- ************************************************************************************** -->
-                        <form>
-                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option1">
-                                <input type="radio" id="option1" name="time" class="mdl-radio__button" value="1 Year">
-                                <span class="mdl-radio__label">1 Year</span>
-                            </label>
-                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option2">
-                                <input type="radio" id="option2" name="time" class="mdl-radio__button" value="6 Months">
-                                <span class=" mdl-radio__label ">6 Months</span>
-                            </label>
-                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect " for="option3">
-                                <input type="radio" id="option3" name="time" class="mdl-radio__button" value="3 Months">
-                                <span class="mdl-radio__label">3 Months</span>
-                            </label>
-                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option4">
-                                <input type="radio" id="option4" name="time" class="mdl-radio__button" value="1 Month">
-                                <span class="mdl-radio__label">1 Month</span>
-                            </label>
-                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option5">
-                                <input type="radio" id="option5" name="time" class="mdl-radio__button" value="1 Week">
-                                <span class="mdl-radio__label">1 Week</span>
-                            </label>
-                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option6">
-                                <input type="radio" id="option6" name="time" class="mdl-radio__button" value="1 Day">
-                                <span class="mdl-radio__label">1 Day</span>
-                            </label>
-                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option7">
-                                <input type="radio" id="option7" name="time" class="mdl-radio__button" value="12 Hours">
-                                <span class="mdl-radio__label">12 Hours</span>
-                            </label>
-                            <button class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' id='survey-start-btn'> Submit </button>
-                        </form>
+                        <!-- <form> -->
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option1">
+                            <input type="radio" id="option1" name="time" class="mdl-radio__button" value="1 Year">
+                            <span class="mdl-radio__label">1 Year</span>
+                        </label>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option2">
+                            <input type="radio" id="option2" name="time" class="mdl-radio__button" value="6 Months">
+                            <span class=" mdl-radio__label ">6 Months</span>
+                        </label>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect " for="option3">
+                            <input type="radio" id="option3" name="time" class="mdl-radio__button" value="3 Months">
+                            <span class="mdl-radio__label">3 Months</span>
+                        </label>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option4">
+                            <input type="radio" id="option4" name="time" class="mdl-radio__button" value="1 Month">
+                            <span class="mdl-radio__label">1 Month</span>
+                        </label>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option5">
+                            <input type="radio" id="option5" name="time" class="mdl-radio__button" value="1 Week">
+                            <span class="mdl-radio__label">1 Week</span>
+                        </label>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option6">
+                            <input type="radio" id="option6" name="time" class="mdl-radio__button" value="1 Day">
+                            <span class="mdl-radio__label">1 Day</span>
+                        </label>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option7">
+                            <input type="radio" id="option7" name="time" class="mdl-radio__button" value="3 Hours">
+                            <span class="mdl-radio__label">3 Hours</span>
+                        </label>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option8">
+                            <input type="radio" id="option8" name="time" class="mdl-radio__button" value="1 Hour">
+                            <span class="mdl-radio__label">1 Hour</span>
+                        </label>
+                        <!--          <button class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' id='survey-start-btn'> Submit </button> -->
+                        <!-- </form> -->
                         <div id="chart_div" style="width: 900px; height: 500px"></div>
                         <!-- ************************************************************************************ -->
                         <h2 id="main-headers">Bitcoin</h2>
@@ -106,17 +110,23 @@
         function get_tblcurrency() {
             $.get("/tblcurrency", function(data) {
                 createChartPoints(data);
-                // setInterval(get_tblcurrency(), 600000)
+                google.charts.load('current', {
+                    packages: ['corechart', 'line']
+                });
+                google.charts.setOnLoadCallback(drawLogScales);
             });
         }
 
         get_tblcurrency();
+        // setInterval(get_tblcurrency(), 60000)
+            //  I want this to be a feature that updates the graph in real time
 
         function createChartPoints(data) {
+            chartPointArray = [];
             for (i = 0; i < data.length; i++) {
-                var dbTime = data[i].tstamp.split("T");
+                var dbTime = data[i].moment_tstamp.split("+");
                 var date = dbTime[0].split("-");
-                var time = dbTime[1].split(":").slice(0, -1);
+                var time = dbTime[1].split(":");
                 var timeArray = date.concat(time);
                 var chartPoint = {
                     time: timeArray,
@@ -127,44 +137,10 @@
             // console.log(chartPointArray)
         }
 
-        /*
-        function priceUSD() {
-
-            $.get("https://min-api.cryptocompare.com/data/price?fsym=USD&tsyms=BTC,ETH,EUR", function(data) {
-                USDprice = data.BTC;
-                // console.log(USDprice);
-                $("#currency").append(`USD/BTC: $${USDprice}<br>`)
-            });
-        }
-
-        function priceBTC() {
-            $.get("https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,ETH,EUR", function(data) {
-                BTCprice = data.USD;
-                console.log(BTCprice)
-                $("#currency").append(`BTC/USD: $${BTCprice}`)
-
-            });
-        }
-        */
-
-        // priceUSD();
-        // priceBTC();
-
-
-        var now = moment().format("X");
-        var month = moment(JSON.stringify(now), "MM-YYYY");
-        var hour = moment(JSON.stringify(now), "hh");
-        var day = moment().format("MM-DD-YY");
-        /*
-
-        */
-        // ************************************************************************************
-
-
-        google.charts.load('current', {
-            packages: ['corechart', 'line']
-        });
-        google.charts.setOnLoadCallback(drawLogScales);
+        // google.charts.load('current', {
+        //     packages: ['corechart', 'line']
+        // });
+        // google.charts.setOnLoadCallback(drawLogScales);
 
         function drawLogScales() {
             var data = new google.visualization.DataTable();
@@ -175,41 +151,31 @@
             for (i = 0; i < chartPointArray.length; i++) {
                 var newPoint = chartPointArray[i];
                 data.addRows([
-                    [new Date(newPoint.time[0], newPoint.time[1] - 1, newPoint.time[2], newPoint.time[3] - 7, newPoint.time[4]), newPoint.price]
+                    [new Date(newPoint.time[0], newPoint.time[1] - 1, newPoint.time[2], newPoint.time[3], newPoint.time[4]), newPoint.price]
                 ])
             }
+            // ************************************************************************************
+            // VARIABLES FOR GRAPH SCALING
+            // ************************************************************************************
 
-            // format: 'MMM dd'             days
-            // format: ['HH:mm', 'ha']      hours
-            // format: ['hh:mm:ss a', 'ha'] hours
-            // format: ['HH:mm a Z', ':mm'] minutes
-            chartChange()
+            var now = moment().format("YYYY-MM-DD+hh:mm:ss");
+            var nowArray = formatTime(now);
+            var then = moment().subtract(1, "Hours").format("YYYY-MM-DD+hh:mm:ss");
+            var maxDate = new Date(nowArray[0], nowArray[1] - 1, nowArray[2], nowArray[3], nowArray[4]);
+            var timeArray = formatTime(then);
+            // ************************************************************************************
+            // DEFAULT GRAPH SCALE
+            // ************************************************************************************
+
             var options = {
                 hAxis: {
                     title: 'Time',
                     logScale: false,
-                    // gridlines: {
-                    //     count: -1,
-                    //     units: {
-                    //         days: {
-                    //             format: ['MMM dd']
-                    //         },
-                    //         hours: {
-                    //             format: ['HH:mm', 'ha']
-                    //         },
-                    //     }
-                    // },
-                    // minorGridlines: {
-                    //     units: {
-                    //         hours: {
-                    //             format: ['hh:mm:ss a', 'ha']
-                    //         },
-                    //         minutes: {
-                    //             format: ['HH:mm a Z', ':mm']
-                    //         }
-                    //     }
-                    // }
-
+                    format: "hh:mma",
+                    viewWindow: {
+                        min: new Date(timeArray[0], timeArray[1] - 1, timeArray[2], timeArray[3], timeArray[4]),
+                        max: maxDate
+                    }
                 },
                 vAxis: {
                     title: 'Price (USD)',
@@ -220,55 +186,117 @@
             };
 
             var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-            chart.draw(data, options);
+            chart.draw(data, options)
+            // setInterval(chart.draw(data, options), 60000;
 
-        }
 
-        function chartChange() {
+
             $("input").click(function() {
+
+                var now = moment().format("YYYY-MM-DD+hh:mm:ss");
+                var nowArray = formatTime(now);
+                var maxDate = new Date(nowArray[0], nowArray[1] - 1, nowArray[2], nowArray[3], nowArray[4]);
                 var selected = $(this).attr("value");
 
-                switch (selected) {
-                    case "1 Year":
-                        console.log(selected)
-                        break;
-                    case "6 Months":
-                        console.log(selected)
-                        break;
-                    case "3 Months":
-                        console.log(selected)
-                        break;
-                    case "1 Month":
-                        console.log(selected)
-                        break;
-                    case "1 Week":
-                        console.log(selected)
-                        break;
-                    case "1 day":
-                        console.log(selected)
-                        break;
-                    case "12 Hours":
-                        console.log(selected)
-                        break;
-                    default:
-                        // function(){
-
-                        // }
-
+                if (selected === "1 Hour") {
+                    console.log(selected)
+                    var then = moment().subtract(1, "Hour").format("YYYY-MM-DD+hh:mm:ss");
+                    var timeArray = formatTime(then);
+                    console.log(timeArray)
+                    options.hAxis.format = "hh:mma";
+                    options.hAxis.viewWindow.min = new Date(timeArray[0], timeArray[1] - 1, timeArray[2], timeArray[3], timeArray[4]);
+                    options.hAxis.viewWindow.max = maxDate;
+                    chart.draw(data, options)
+                } else if (selected === "3 Hours") {
+                    console.log(selected)
+                    var then = moment().subtract(3, "Hours").format("YYYY-MM-DD+hh:mm:ss");
+                    var timeArray = formatTime(then);
+                    console.log(timeArray)
+                    options.hAxis.format = "hh:mma";
+                    options.hAxis.viewWindow.min = new Date(timeArray[0], timeArray[1] - 1, timeArray[2], timeArray[3], timeArray[4]);
+                    options.hAxis.viewWindow.max = maxDate;
+                    chart.draw(data, options);
+                } else if (selected === "1 Day") {
+                    var then = moment().subtract(1, "Days").format("YYYY-MM-DD+hh:mm:ss");
+                    var timeArray = formatTime(then);
+                    options.hAxis.format = "MMM-d hh:mma";
+                    options.hAxis.viewWindow.min = new Date(timeArray[0], timeArray[1] - 1, timeArray[2], timeArray[3], timeArray[4]);
+                    options.hAxis.viewWindow.max = maxDate;
+                    chart.draw(data, options)
+                } else if (selected === "1 Week") {
+                    var then = moment().subtract(1, "Weeks").format("YYYY-MM-DD+hh:mm:ss");
+                    var timeArray = formatTime(then);
+                    options.hAxis.format = "MMM-d";
+                    options.hAxis.viewWindow.min = new Date(timeArray[0], timeArray[1] - 1, timeArray[2], timeArray[3], timeArray[4]);
+                    options.hAxis.viewWindow.max = maxDate;
+                    chart.draw(data, options)
+                } else if (selected === "1 Month") {
+                    var then = moment().subtract(1, "Months").format("YYYY-MM-DD+hh:mm:ss");
+                    var timeArray = formatTime(then);
+                    options.hAxis.format = "MMM-d";
+                    options.hAxis.viewWindow.min = new Date(timeArray[0], timeArray[1] - 1, timeArray[2], timeArray[3], timeArray[4]);
+                    options.hAxis.viewWindow.max = maxDate;
+                    chart.draw(data, options)
+                } else if (selected === "3 Months") {
+                    var then = moment().subtract(3, "Months").format("YYYY-MM-DD+hh:mm:ss");
+                    var timeArray = formatTime(then);
+                    options.hAxis.format = "MMM-d yyyy";
+                    options.hAxis.viewWindow.min = new Date(timeArray[0], timeArray[1] - 1, timeArray[2], timeArray[3], timeArray[4]);
+                    options.hAxis.viewWindow.max = maxDate;
+                    chart.draw(data, options)
+                } else if (selected === "6 Months") {
+                    var then = moment().subtract(6, "Months").format("YYYY-MM-DD+hh:mm:ss");
+                    var timeArray = formatTime(then);
+                    options.hAxis.format = "MMM yyyy";
+                    options.hAxis.viewWindow.max = maxDate;
+                    chart.draw(data, options)
+                } else if (selected === "1 Year") {
+                    var then = moment().subtract(1, "Years").format("YYYY-MM-DD+hh:mm:ss");
+                    var timeArray = formatTime(then);
+                    options.hAxis.format = "MMM yyyy";
+                    options.hAxis.viewWindow.min = new Date(timeArray[0], timeArray[1] - 1, timeArray[2], timeArray[3], timeArray[4]);
+                    options.hAxis.viewWindow.max = maxDate;
+                    chart.draw(data, options)
                 }
             })
         }
 
-        // $("#change").onclick = function() {
-        //     // If the format option matches, change it to the new option,
-        //     // if not, reset it to the original format.
-        // options.hAxis.format === 'M/d/yy' ?
-        //     options.hAxis.format = 'MMM dd, yyyy' :
-        //     options.hAxis.format = 'M/d/yy';
+        function formatTime(thenTime) {
+            var dbTime = thenTime.split("+");
+            var date = dbTime[0].split("-");
+            var time = dbTime[1].split(":");
+            var timeArray = date.concat(time);
+            // console.log(timeArray)
+            return timeArray
+        }
 
-        // chart.draw(data, options);
-        // };
 
+        // ************************************************************************************
+        // UNCOMMENT THIS TO SEE THE PRICE OF BTC IN REAL TIME
+        // ************************************************************************************
+
+
+        // function priceUSD() {
+        //     $.get("https://min-api.cryptocompare.com/data/price?fsym=USD&tsyms=BTC,ETH,EUR", function(data) {
+        //         USDprice = data.BTC;
+        //         console.log(USDprice);
+        //         $("#currency").append(`USD/BTC: $${USDprice}<br>`)
+        //     });
+        // }
+        // function priceBTC() {
+        //     $.get("https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,ETH,EUR", function(data) {
+        //         BTCprice = data.USD;
+        //         console.log(BTCprice)
+        //         $("#currency").append(`BTC/USD: $${BTCprice}`)
+        //     });
+        // }
+        // priceUSD();
+        // priceBTC();
+
+
+        // ************************************************************************************
+        // END
+        // ************************************************************************************
     })
     </script>
 </body>
