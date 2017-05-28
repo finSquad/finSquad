@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS `facefin_db`.`tblcurrency` (
   `currencyType` VARCHAR(45) NOT NULL DEFAULT 'USD' COMMENT 'default current is USD but it can be different',
   `USDprice` FLOAT(10,2) NULL DEFAULT NULL,
   `BTCprice` FLOAT(10,5) NULL DEFAULT NULL,
+  `moment_tstamp` VARCHAR( 255 ) NOT NULL,
   `tstamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
@@ -75,3 +76,6 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COMMENT = 'this is user profile file ';
 SET FOREIGN_KEY_CHECKS = 1;
+
+USE facefin_db;
+SELECT * FROM tblcurrency;
