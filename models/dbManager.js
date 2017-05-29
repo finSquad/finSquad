@@ -55,7 +55,7 @@ var dbManager = {
 			}
 		}); 
 	},
-
+	// NEEDS TO BE TESTED. 
 	addToGeneralPost: function(general_post){
 		var query = "INSERT INTO tblgeneralpost(general_post) VALUES(?);" 
 		sqlConn.query(query, [general_post], function(err, result){ 
@@ -67,7 +67,7 @@ var dbManager = {
 			}
 		}); 
 	},
-
+	// WORKS
 	grabAllGeneralPost: function(CB){
 		var query = "SELECT * FROM tblgeneralpost"; 
 		sqlConn.query(query, function(err, result){
@@ -76,8 +76,27 @@ var dbManager = {
 			}
 			CB(result); 
 		}); 
+	}, 
+	// NEEDS TO BE TESTED. 
+	getAllFriendsPost: function(cb){
+		var query = ""; 
+		sqlConn.query(query, function(err, result){
+			if(err){
+				console.log(err);
+			}
+			cb(result); 
+		});
+	},
+	// NEEDS TO BE TESTED. 
+	insertPrivatePost: function(cb){
+			var query = ""; 
+			sqlConn.query(query, function(err, result){
+				if(err){
+					console.log(err);
+				}
+				cb(result); 
+			}); 
 	}
-
 
 }
 module.exports = dbManager; 

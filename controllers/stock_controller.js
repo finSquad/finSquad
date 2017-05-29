@@ -19,16 +19,28 @@ router.get("/tblcurrency", function(req,res){
     });
     
 });
-//Need To Test. Will post to tblgeneralpost. 
+//NEEDS TO BE WORKED ON. Will post to tblgeneralpost. 
 router.post("/post_generalpost", function(req, res){
 	dbManager.addToGeneralPost(); 
-})
-// Will Get all post from general post. 
+});
+// THIS ROUTER WORKS. Will Get all post from general post. 
 router.get("/get_all_general_post", function(req, res){
 	dbManager.grabAllGeneralPost(function(generalpost){
 		res.json(generalpost); 
 	}); 
-})
+}); 
+// NEEDS TO BE WORKED ON. In charge of grabbing all friends post. 
+router.get("/get_all_friends_post", function(req, res){
+    dbManager.getAllFriendsPost(function(friendsPost){
+        res.json(friendsPost); 
+    }); 
+}); 
+// NEEDS TO BE WORKED ON. 
+router.post("privatepost", function(req, res){
+    dbManager.insertPrivatePost(function(info){
+            res.json(info); 
+    }); 
+});
 
 // Create all our routes and set up logic within those routes where required.
 /*
