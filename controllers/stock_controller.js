@@ -19,7 +19,16 @@ router.get("/tblcurrency", function(req,res){
     });
     
 });
-
+//Need To Test. Will post to tblgeneralpost. 
+router.post("/post_generalpost", function(req, res){
+	dbManager.addToGeneralPost(); 
+})
+// Will Get all post from general post. 
+router.get("/get_all_general_post", function(req, res){
+	dbManager.grabAllGeneralPost(function(generalpost){
+		res.json(generalpost); 
+	}); 
+})
 
 // Create all our routes and set up logic within those routes where required.
 /*

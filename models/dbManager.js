@@ -51,9 +51,33 @@ var dbManager = {
 				console.log(err);
 			}
 			else{
-				// console.log(result); 
+				console.log(result); 
 			}
 		}); 
+	},
+
+	addToGeneralPost: function(general_post){
+		var query = "INSERT INTO tblgeneralpost(general_post) VALUES(?);" 
+		sqlConn.query(query, [general_post], function(err, result){ 
+			if(err){
+				console.log(err); 
+			}
+			else{
+				console.log(result); 
+			}
+		}); 
+	},
+
+	grabAllGeneralPost: function(CB){
+		var query = "SELECT * FROM tblgeneralpost"; 
+		sqlConn.query(query, function(err, result){
+			if(err){
+				console.log(err);
+			}
+			CB(result); 
+		}); 
 	}
+
+
 }
 module.exports = dbManager; 
