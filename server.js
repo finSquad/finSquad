@@ -33,7 +33,7 @@ function bitCoinAjaxCall() {
 
     request("https://min-api.cryptocompare.com/data/price?fsym=USD&tsyms=BTC,ETH,EUR", function(err, res, body) {
         var parsedBody = JSON.parse(body);
-        console.log(parsedBody.BTC);
+        // console.log(parsedBody.BTC);
         BTCprice = parsedBody.BTC;
         request("https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,ETH,EUR", function(err, res, body) {
             var moment_tstamp = moment().format("YYYY-MM-DD+HH:mm:ss");
