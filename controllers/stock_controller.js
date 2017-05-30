@@ -1,11 +1,9 @@
 // DEPENDENCIES
 // We require express so we can display to HTML
-<<<<<<< HEAD
+
 var request = require("request")
 var path = require("path"); 
-=======
 
->>>>>>> sidebars
 var express = require("express");
 // Router sets up 
 var router = express.Router();
@@ -69,20 +67,14 @@ router.get("/api/stocks?", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-<<<<<<< HEAD
+
    
     var newStock = req.body;
     db.Stock.create({
         currency: newStock.currency,
         priceUSD: newStock.priceUSD,
         priceBTC: newStock.priceBTC
-=======
-    var newPost = req.body;
-    db.Wine.create({
-        wine: newWine.wine,
-        description: newWine.description,
-        drinken: newWine.drinken
->>>>>>> sidebars
+
     }).then(function() {
         res.redirect("/")
 
