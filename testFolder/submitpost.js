@@ -15,14 +15,14 @@ $(form).on("#submitPost", function(event){
 		body: userPost.val().trim()
 	}
 	
-	console.log(newPost);
+	// console.log(newPost);
 	submitPost(newPost);
 
 });
 
 function submitPost(post){
 	$.post("/", post, function(){
-		console.log(post);
+		// console.log(post);
 	});
 }
 
