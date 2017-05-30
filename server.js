@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // DEPENDENCIES -------------------------------------
 var express = require('express');
 var app = express();
@@ -5,8 +6,8 @@ var bodyParser = require('body-parser');
 var methodOverride = require("method-override");
 var request = require("request");
 var PORT = process.env.PORT || 8080;
-var db = require("./models")
-
+var dbManager = require("./models/dbManager.js");
+var moment = require("moment")
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,9 +27,32 @@ app.set("view engine", "handlebars");
 var routes = require("./controllers/stock_controller.js")
 app.use("/", routes);
 
+// will make ajax calls for currency info.  
+function bitCoinAjaxCall() {
+    var BTCprice;
+    var USDprice;
 
-db.sequelize.sync().then(function() {
-    app.listen(PORT, function() {
-        console.log(`App listening on PORT ${PORT}.`)
-    })
-})
+    request("https://min-api.cryptocompare.com/data/price?fsym=USD&tsyms=BTC,ETH,EUR", function(err, res, body) {
+        var parsedBody = JSON.parse(body);
+        console.log(parsedBody.BTC);
+        BTCprice = parsedBody.BTC;
+        request("https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,ETH,EUR", function(err, res, body) {
+            var moment_tstamp = moment().format("YYYY-MM-DD+HH:mm:ss");
+            console.log(moment_tstamp)
+            var parsedBody = JSON.parse(body);
+            console.log(parsedBody.USD);
+            USDprice = parsedBody.USD;
+            dbManager.addToCurrencyTable(BTCprice, USDprice, moment_tstamp.toString());
+        });
+    });
+};
+
+setInterval(bitCoinAjaxCall, 60000);
+// end of ajax call function 
+
+app.listen(PORT, function() {
+    console.log("App listening on PORT: " + PORT);
+});
+=======
+
+>>>>>>> sidebars

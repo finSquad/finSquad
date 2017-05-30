@@ -1,8 +1,10 @@
 {
   "development": {
     "username": "root",
-    "password": "Lookatme!1",
+    "password": "",
     "database": "finsquad_db",
+    //"password": "1234",
+   // "database": "finSquad_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
