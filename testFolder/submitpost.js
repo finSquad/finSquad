@@ -2,7 +2,7 @@ $(document).ready(function (){
 
 
 //grab post to append to array 
-var userPost = $("#body");
+var userPost = $("#body").val().trim();
 var form = $("postForm");
 
 

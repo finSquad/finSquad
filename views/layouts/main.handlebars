@@ -19,23 +19,48 @@
 		<title>Title</title>
 	</head>
 	<body>
-
-        <!---        DRAWER         -->
-        <div class="mdl-layout__drawer">
+    
+    <div class="grid-container">
+        
+        <div class="grid-top">
             
-            <span class="mdl-layout-title">Title</span>
-            
-            <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="/">Home</a>
-                <a class="mdl-navigation__link" href="/">Link</a>
-            </nav>
-        </div>
-            <main class="mdl-layout__content ">
-                <div class="page-content">
-                    {{{ body }}}
+            <div class="mdl-layout mdl-js-layout mdl-layout--drawer mdl-layout--fixed-header">
+                <header class="mdl-layout__header">
+                    <div class="mdl-layout__header-row">
+                        <!-- Title -->
+                        <span class="mdl-layout-title">Title</span>
+                        <!-- Add spacer, to align navigation to the right -->
+                        <div class="mdl-layout-spacer"></div>
+                        <!-- Navigation -->
+                        <nav class="mdl-navigation">
+                            <a class="mdl-navigation__link" href="/">Home</a>
+                            <a class="mdl-navigation__link" href="/">Link</a>
+                        </nav>
+                    </div>
+                </header>
+                <!---        DRAWER         -->
+                <div class="mdl-layout__drawer">
+                    <span class="mdl-layout-title">Title</span>
+                    <nav class="mdl-navigation">
+                        <a class="mdl-navigation__link" href="/">Home</a>
+                        <a class="mdl-navigation__link" href="/">Link</a>
+                    </nav>
                 </div>
-            </main>
+            </div>
+
         </div>
+
+            
+               
+                    {{{ body }}}
+              
+            
+            
+
+
+    </div>
+
+
 
     <script type="text/javascript" href="../../public/assets/javascript/stockgraph.js"></script>
 	</body>

@@ -8,12 +8,6 @@ $(document).ready(function(){
 //var textFields = [tf1, tf2, tf3, tf4, tf5];
 //myTimeline.staggerTo(textFields, 1, {top:"+=150", ease:CubicIn.ease}, 0.2);
 
-function checkifWorking (){
-	$("#submitPost").click(function(){
-		alert("working");
-	});
-}
-checkifWorking();
 
 // run the Ajax call. In the .then do a set timeout and another Ajax call to update posts, nest it inside the set timeout 
 
@@ -61,7 +55,7 @@ In_userid: 11
 //grab posts from database
 function getPosts(sidebar){
 
-	$.get("/post_generalpost", function(data){
+	$.get("/getallgeneralpost", function(data){
 		console.log(data);
 		res.json(data);
 
@@ -86,7 +80,7 @@ function initializePosts(){
 	// console.log(posts);
 }
 
-initializePosts();
+
 
 
 function movement (){

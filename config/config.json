@@ -2,7 +2,6 @@
 {
   "development": {
     "username": "root",
-
     "password": "1234",
     "database": "finSquad_test",
     "host": "127.0.0.1",
