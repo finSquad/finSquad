@@ -17,6 +17,7 @@ CREATE SCHEMA IF NOT EXISTS `facefin_db` ;
 -- ----------------------------------------------------------------------------
 -- Table facefin_db.tblcurrency
 -- ----------------------------------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS 'facefin_db'.'tblgeneralpost'(
   'id' INTEGER AUTO_INCREMENT PRIMARY KEY  NOT NULL,
   'general_post' VARCHAR(100) NOT NULL, 
@@ -29,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `facefin_db`.`tblcurrency` (
   `BTCprice` FLOAT(10,5) NULL DEFAULT NULL,
   `moment_tstamp` VARCHAR( 255 ) NOT NULL,
   PRIMARY KEY (`id`))
+
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COMMENT = 'This stand alone table to store curreny data from ajax call';
@@ -80,6 +82,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COMMENT = 'this is user profile file ';
 SET FOREIGN_KEY_CHECKS = 1;
+
 
 USE facefin_db;
 SELECT * FROM tblcurrency;
