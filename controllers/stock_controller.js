@@ -32,7 +32,7 @@ router.get("/get_all_general_post", function(req, res){
 	}); 
 }); 
 // NEEDS TO BE WORKED ON. In charge of grabbing all friends post. 
-router.get("/get_all_friends_post", function(req, res){
+router.get("/api/:userid/allfriendspost", function(req, res){
     dbManager.getAllFriendsPost(function(friendsPost){
         res.json(friendsPost); 
     }); 
