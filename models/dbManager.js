@@ -9,8 +9,8 @@ if(process.env.JAWSDB_URL){
 	sqlConn = mysql.createConnection({
 	port: 3306,
 	host: "localhost",
-	user: "zee",
-	password: "sesame", 
+	user: "root",
+	password: "1234", 
 	database: "facefin_db"
 	});
 }

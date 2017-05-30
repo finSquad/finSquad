@@ -38,7 +38,7 @@ body {
 
 .mdl-grid,
 #graph {
-    overflow: auto;
+    width: 50%
     background: #ddeaff;
 }
 
