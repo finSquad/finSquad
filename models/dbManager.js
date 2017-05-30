@@ -9,7 +9,7 @@ if(process.env.JAWSDB_URL){
 	sqlConn = mysql.createConnection({
 	port: 3306,
 	host: "localhost",
-	user: "zee",
+	user: "root",
 	password: "sesame", 
 	database: "facefin_db"
 	});
@@ -48,10 +48,10 @@ var dbManager = {
 		var query = "INSERT INTO tblcurrency(BTCprice, USDprice, moment_tstamp) VALUES(?,?,?);";
 		sqlConn.query(query, [BTCprice, USDprice, moment_tstamp], function(err, result){
 			if(err){
-				console.log(err);
+				// console.log(err);
 			}
 			else{
-				console.log(result); 
+				// console.log(result); 
 			}
 		}); 
 	},
@@ -63,7 +63,7 @@ var dbManager = {
 				console.log(err); 
 			}
 			else{
-				console.log(result); 
+				// console.log(result); 
 			}
 		}); 
 	},
@@ -72,7 +72,7 @@ var dbManager = {
 		var query = "SELECT * FROM tblgeneralpost"; 
 		sqlConn.query(query, function(err, result){
 			if(err){
-				console.log(err);
+				// console.log(err);
 			}
 			CB(result); 
 		}); 
@@ -82,7 +82,7 @@ var dbManager = {
 		var query = ""; 
 		sqlConn.query(query, function(err, result){
 			if(err){
-				console.log(err);
+				// console.log(err);
 			}
 			cb(result); 
 		});
@@ -92,7 +92,7 @@ var dbManager = {
 			var query = ""; 
 			sqlConn.query(query, function(err, result){
 				if(err){
-					console.log(err);
+					// console.log(err);
 				}
 				cb(result); 
 			}); 

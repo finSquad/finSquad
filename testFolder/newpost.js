@@ -51,8 +51,13 @@ In_userid: 11
 
 //grab posts from database
 function getPosts(sidebar){
+<<<<<<< HEAD
 	$.get("/api/"+userFriends+"/allfriendspost", function(data){
 		console.log(data);
+=======
+	$.get("/", function(data){
+		// console.log(data);
+>>>>>>> a4b5cb222d95a75a45cbd4a23902afabbb73f749
 
 		initializePosts();
 	});
@@ -72,7 +77,7 @@ function initializePosts(){
 		postArr.push(newPostCreated(posts[i]));
 	}
 	postContainer.append(postArr);
-	console.log(posts);
+	// console.log(posts);
 }
 
 /* testing
@@ -144,7 +149,7 @@ function newPostCreated(post) {
 	newPostPanel.append(newPostPanelBody);
 
 	newPostPanel.data(posts);
-	console.log(newPostPanel);
+	// console.log(newPostPanel);
 	return newPostPanel;
 	
 }

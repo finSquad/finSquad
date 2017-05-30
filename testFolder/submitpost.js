@@ -18,14 +18,19 @@ $(form).on("#submitPost", function(event){
 		body: userPost.val().trim()
 	}
 	
-	console.log(newPost);
+	// console.log(newPost);
 	submitPost(newPost);
 
 });
 
 function submitPost(post){
+<<<<<<< HEAD
 	$.post("/api/"+userid+"/allfriendspost", post, function(){
 		console.log(post);
+=======
+	$.post("/", post, function(){
+		// console.log(post);
+>>>>>>> a4b5cb222d95a75a45cbd4a23902afabbb73f749
 	});
 }
 
