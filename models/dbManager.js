@@ -2,13 +2,18 @@
 var mysql = require("mysql"); 
 // Possible Problems: Will have to have different host once we 
 // post application on heroku server 
-var sqlConn = mysql.createConnection({
+var sqlConn; 
+if(process.env.JAWSDB_URL){
+	sqlConn = mysql.createConnection(process.env.JAWSDB_URL); 
+}else{
+	sqlConn = mysql.createConnection({
 	port: 3306,
 	host: "localhost",
 	user: "root",
 	password: "Lookatme!1", 
 	database: "facefin_db"
-}); 
+	});
+}
 
 sqlConn.connect(function(err){
 	if(err){
@@ -46,9 +51,52 @@ var dbManager = {
 				console.log(err);
 			}
 			else{
-				// console.log(result); 
+				console.log(result); 
 			}
 		}); 
+	},
+	// NEEDS TO BE TESTED. 
+	addToGeneralPost: function(general_post){
+		var query = "INSERT INTO tblgeneralpost(general_post) VALUES(?);" 
+		sqlConn.query(query, [general_post], function(err, result){ 
+			if(err){
+				console.log(err); 
+			}
+			else{
+				console.log(result); 
+			}
+		}); 
+	},
+	// WORKS
+	grabAllGeneralPost: function(CB){
+		var query = "SELECT * FROM tblgeneralpost"; 
+		sqlConn.query(query, function(err, result){
+			if(err){
+				console.log(err);
+			}
+			CB(result); 
+		}); 
+	}, 
+	// NEEDS TO BE TESTED. 
+	getAllFriendsPost: function(cb){
+		var query = ""; 
+		sqlConn.query(query, function(err, result){
+			if(err){
+				console.log(err);
+			}
+			cb(result); 
+		});
+	},
+	// NEEDS TO BE TESTED. 
+	insertPrivatePost: function(cb){
+			var query = ""; 
+			sqlConn.query(query, function(err, result){
+				if(err){
+					console.log(err);
+				}
+				cb(result); 
+			}); 
 	}
+
 }
 module.exports = dbManager; 
