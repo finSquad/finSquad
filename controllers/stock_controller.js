@@ -1,5 +1,6 @@
 // DEPENDENCIES
 // We require express so we can display to HTML
+
 var express = require("express");
 // Router sets up 
 var router = express.Router();
@@ -28,7 +29,7 @@ router.get("/api/wines?", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-    var newWine = req.body;
+    var newPost = req.body;
     db.Wine.create({
         wine: newWine.wine,
         description: newWine.description,
@@ -66,3 +67,6 @@ router.delete("/api/wines/:id", function(req, res) {
 
 // Export routes for server.js to use.
 module.exports = router;
+
+
+

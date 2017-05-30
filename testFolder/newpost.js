@@ -4,15 +4,20 @@ $(document).ready(function(){
 
 
 
-//sidebar container holding all of the posts
-var postContainer = $("#postContainer");
+
 
 //logic for movement of post to push out older posts
+
+//use this once db set up to push posts into array
+//
+//var textFields = [tf1, tf2, tf3, tf4, tf5];
+//myTimeline.staggerTo(textFields, 1, {top:"+=150", ease:CubicIn.ease}, 0.2);
+
 tlPost = new TimelineLite();
 
 	el = $(".mdl-card");
 
-	tlPost.staggerTo(el, 1, {top:100}, 0.25); 
+	tlPost.staggerTo(el, 1, {top:200}, 0.25); 
 
 	$("#submitPost").click(function(){
 		if (tlPost.progress() >1){
@@ -24,32 +29,18 @@ tlPost = new TimelineLite();
 
 	});
 
-//grab post to append to array 
-var userPost = $("#body");
-var form = $("postForm");
+
+
+//sidebar container holding all of the posts
+var postContainer = $("#postContainer");
+
 //empty variables
 var postArr;
 var posts;
 
-$(form).on("#submitPost", function handleFormSubmit(event){
-	event.preventDefault();
 
-	if (!userPost.val().trim === null){
-		return;
-	}
-
-	var newPost = {
-		body: userPost.val().trim()
-	}
-
-	var postArr = [];
-
-	console.log(newPost);
-
-	postArr.push(newPost);
-
-});
-
+//var postArr = [];
+//postArr.push(newPost);
 
 
 
@@ -63,6 +54,7 @@ function getPosts(sidebar){
 	});
 
 }
+
 //getting the inital list of posts
 getPosts();
 
@@ -73,10 +65,22 @@ function initializePosts(){
 	var postArr = [];
 
 	for (var i = 0; i < posts.length; i++) {
-		postArr.push(newPostCreated(posts[i]);
+		postArr.push(newPostCreated(posts[i]));
 	}
 	postContainer.append(postArr);
+	console.log(posts);
 }
+
+/* testing
+function submit (){
+	$("#submitPost").click(function(){
+		var postBody = $("#body").val().trim();
+		newPostCreated(postBody);
+		console.log(newPostCreated);
+	});
+} 
+*/
+
 
 function newPostCreated(post) {
 	var newPostPanel = $("<div>");
@@ -87,11 +91,11 @@ function newPostCreated(post) {
 	newPostPanelTitle.addClass("mdl-card__title-text");
 	var titleH2 = $("<h2>");
 	titleH2.addClass("mdl-card__title-text");
->>>	titleH2.text({{{Username, timestamp}}});
+/*>>>*/titleH2.text(Username, Timestamp);
 	var newPostPanelBody = $("<div>");
 	newPostPanelBody.addClass("mdl-card__supporting-text");
 	var newPostBody = $("<p>");
->>>	newPostBody.text({{{post}}});
+/*>>>*/newPostBody.text(post);
 	var newPostActionBorder = $("<div>");
 	newPostActionBorder.addClass("mdl-card__actions mdl-card--border");
 	var newPostActionBtn = $("<a>");
@@ -116,7 +120,8 @@ function newPostCreated(post) {
 	newPostPanel.append(newPostPanelHeading);
 	newPostPanel.append(newPostPanelBody);
 
-	newPostPanel.data(posts)
+	newPostPanel.data(posts);
+	console.log(newPostPanel);
 	return newPostPanel;
 
 }
@@ -124,6 +129,7 @@ function newPostCreated(post) {
 
 
 //grab click listeners on friend posts 
+
 
 
 });
