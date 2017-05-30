@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // DEPENDENCIES -------------------------------------
 var express = require('express');
 var app = express();
@@ -59,3 +60,6 @@ setInterval(bitCoinAjaxCall, 60000);
 app.listen(PORT, function() {
     console.log("App listening on PORT: " + PORT);
 });
+=======
+
+>>>>>>> sidebars
