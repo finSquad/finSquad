@@ -52,7 +52,4 @@ setInterval(bitCoinAjaxCall, 60000);
 app.listen(PORT, function() {
     console.log("App listening on PORT: " + PORT);
 });
-<<<<<<< HEAD
 
-=======
->>>>>>> a4b5cb222d95a75a45cbd4a23902afabbb73f749

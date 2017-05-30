@@ -1,82 +1,83 @@
-<div class="grid-container">
-        <!-- add navbar with fixed left van menu -->
-        <div class="grid-top">
-            Top
-        </div>
-        <!-- close top div -->
-        <div class="grid-left">Left</div>
-        <!-- Page center -->
-        <div class="grid-centre">
-            <!-- FORM need to incorperate local stroage -->
-            <div class="mdl-grid">
+
+<div class="grid-centre">
+            
+            
+
+
+    <div id="graph"> <!-- dynamic graph  -->
+
+  <h1 id="main-headers">Track your Coin</h1>
+  
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-phone">
+    </div>
+      <div class="mdl-cell mdl-cell--5-col mdl-cell--5-col-tablet mdl-cell--1-phone">
+        <h2 id="main-headers">Bitcoin</h2>
+          {{#each stocks}}
+           {{> stocks/stocks}}
+         {{/each}}
+      </div>
+  </div>
+
+
+        </div> <!--close div id graph-->
+       
+        </div> <!-- close center div -->
+        
+
+
+<div class="grid-right">
+
+
+<!--posts container -->
+    <div id="postDiv">
+
+      <div class="mdl-grid">
                 <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet graybox">
-                    <form id="postForm" action="#">
+
+                    <form id="postForm" action="/post_generalpost" method="POST">
+
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="body">
+                            <input class="mdl-textfield__input" name="post" type="text" id="body">
                             <label class="mdl-textfield__label" for="body">Tell your friends...</label>
                         </div>
+                        
                         <button id="submitPost" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored
                         mdl-js-ripple-effect
                         ">
                             <i class="material-icons">add</i>
                         </button>
+
                     </form>
+
+
+                </div>
+
+            </div>
+
+{{#each tblpost}}
+
+        <div class="mdl-card__actions">
+            <div class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--2-col-tablet mdl-shadow--2dp">
+                    <div class="mdl-card__title">
+                      <h1 class="mdl-card__title-text" 
+                      id="timestamp">{{this.date_created}}</h1>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <p id="newPost">{{this.general_post}}</p>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Visit Profile</a>
+                        <div class="mdl-layout-spacer"></div>
+                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">favorite</i></button>
+                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">share</i></button>
+                    </div>
                 </div>
             </div>
-            <!-- dynamic graph  -->
-            <div id="graph"></div>
+{{/each}}         
+
+           
+
         </div>
-        <!-- close center div -->
-        <!-- sidebar right -->
-        <div class="grid-right">
-            <!--posts container -->
-            <div id="postDiv" class="mdl-card__actions">
-                <div class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--2-col-tablet mdl-shadow--2dp">
-                    <div class="mdl-card__title">
-                        <h1 class="mdl-card__title-text" id="timestamp">{{{User name}}} {{{post time}}}</h1>
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <p id="newPost">{{{post body}}}</p>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Visit Profile</a>
-                        <div class="mdl-layout-spacer"></div>
-                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">favorite</i></button>
-                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">share</i></button>
-                    </div>
-                </div>
-            </div>
-            <div class="mdl-card__actions">
-                <div class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--2-col-tablet mdl-shadow--2dp">
-                    <div class="mdl-card__title">
-                        <h1 class="mdl-card__title-text" id="timestamp">{{{User name}}} {{{post time}}}</h1>
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <p id="newPost">{{{post body}}}</p>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Visit Profile</a>
-                        <div class="mdl-layout-spacer"></div>
-                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">favorite</i></button>
-                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">share</i></button>
-                    </div>
-                </div>
-            </div>
-            <div class="mdl-card__actions">
-                <div class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--2-col-tablet mdl-shadow--2dp">
-                    <div class="mdl-card__title">
-                        <h1 class="mdl-card__title-text" id="timestamp">{{{User name}}} {{{post time}}}</h1>
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <p id="newPost">{{{post body}}}</p>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Visit Profile</a>
-                        <div class="mdl-layout-spacer"></div>
-                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">favorite</i></button>
-                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">share</i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>

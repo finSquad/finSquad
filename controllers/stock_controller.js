@@ -1,25 +1,20 @@
 // DEPENDENCIES
 // We require express so we can display to HTML
-<<<<<<< HEAD
-
 var request = require("request")
 var path = require("path"); 
 
-=======
-var request = require("request")
-var path = require("path"); 
->>>>>>> a4b5cb222d95a75a45cbd4a23902afabbb73f749
 var express = require("express");
 // Router sets up 
 var router = express.Router();
 
 var dbManager = require("../models/dbManager.js");
 
-router.get("/", function(req, res){
-    res.sendFile(path.join(__dirname,"../public/assets/graphtest.html"));
-    // USE HANDLEBARS HERE TO RENDER PAGE 
-    // POPULATES THE FRONT PAGE WITH POSTS
-}); 
+router.get("/", function(req,res){
+   dbManager.grabAllGeneralPost(function(tableInfo){
+       var tblcur = {tblpost: tableInfo};
+       res.render("index", tblcur);
+   });
+});
 
 router.get("/tblcurrency", function(req,res){
     dbManager.getAll_tbl_currency(function(tableInfo){
@@ -30,17 +25,22 @@ router.get("/tblcurrency", function(req,res){
 
 //NEEDS TO BE WORKED ON. Will post to tblgeneralpost. 
 router.post("/post_generalpost", function(req, res){
-	dbManager.addToGeneralPost(); 
+    var newPost = req.body.post;
+
+	dbManager.addToGeneralPost(newPost, function(){
+        res.redirect("/");
+    }); 
 });
 // THIS ROUTER WORKS. Will Get all post from general post. 
-router.get("/get_all_general_post", function(req, res){
+router.get("/getallgeneralpost", function(req, res){
 	dbManager.grabAllGeneralPost(function(generalpost){
 		res.json(generalpost); 
 	}); 
 }); 
 // NEEDS TO BE WORKED ON. In charge of grabbing all friends post. 
 router.get("/api/:userid/allfriendspost", function(req, res){
-    dbManager.getAllFriendsPost(function(friendsPost){
+    var userid = parseInt(req.params.userid)
+    dbManager.getAllFriendsPost(userid, function(friendsPost){
         res.json(friendsPost); 
     }); 
 }); 
@@ -74,20 +74,13 @@ router.get("/api/stocks?", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-<<<<<<< HEAD
 
-   
-=======
->>>>>>> a4b5cb222d95a75a45cbd4a23902afabbb73f749
     var newStock = req.body;
     db.Stock.create({
         currency: newStock.currency,
         priceUSD: newStock.priceUSD,
         priceBTC: newStock.priceBTC
-<<<<<<< HEAD
 
-=======
->>>>>>> a4b5cb222d95a75a45cbd4a23902afabbb73f749
     }).then(function() {
         res.redirect("/")
 

@@ -10,7 +10,7 @@ if(process.env.JAWSDB_URL){
 	port: 3306,
 	host: "localhost",
 	user: "root",
-	password: "sesame", 
+	password: "1234", 
 	database: "facefin_db"
 	});
 }
@@ -56,20 +56,22 @@ var dbManager = {
 		}); 
 	},
 	// NEEDS TO BE TESTED. 
-	addToGeneralPost: function(general_post){
+	addToGeneralPost: function(general_post, cb){
 		var query = "INSERT INTO tblgeneralpost(general_post) VALUES(?);" 
 		sqlConn.query(query, [general_post], function(err, result){ 
 			if(err){
 				console.log(err); 
+				cb();
 			}
 			else{
 				// console.log(result); 
+				cb();
 			}
 		}); 
 	},
 	// WORKS
 	grabAllGeneralPost: function(CB){
-		var query = "SELECT * FROM tblgeneralpost"; 
+		var query = "SELECT * FROM tblgeneralpost ORDER BY id DESC"; 
 		sqlConn.query(query, function(err, result){
 			if(err){
 				// console.log(err);

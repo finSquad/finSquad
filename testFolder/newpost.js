@@ -9,11 +9,16 @@ $(document).ready(function(){
 //myTimeline.staggerTo(textFields, 1, {top:"+=150", ease:CubicIn.ease}, 0.2);
 
 
+// run the Ajax call. In the .then do a set timeout and another Ajax call to update posts, nest it inside the set timeout 
+
+// loop through this logic so. 
+
+// Function that calls itself, and have a set timeout inside so that it staggers. 
 
 
 
 //sidebar container holding all of the posts
-var postContainer = $("#postContainer");
+var postContainer = $("#postDiv");
 
 //empty variables
 var postArr;
@@ -21,7 +26,7 @@ var posts;
 var In_userid = 1
 var userFriends = [{
 In_userid: 2
-}, {
+}/*, {
 In_userid: 3
 }, {
 In_userid: 4
@@ -39,7 +44,7 @@ In_userid: 9
 In_userid: 10
 },{
 In_userid: 11
-}];
+}*/];
 
 
 //var postArr = [];
@@ -47,17 +52,14 @@ In_userid: 11
 
 
 
-
-
 //grab posts from database
 function getPosts(sidebar){
-<<<<<<< HEAD
-	$.get("/api/"+userFriends+"/allfriendspost", function(data){
+
+
+	$.get("/getallgeneralpost", function(data){
 		console.log(data);
-=======
-	$.get("/", function(data){
-		// console.log(data);
->>>>>>> a4b5cb222d95a75a45cbd4a23902afabbb73f749
+		res.json(data);
+
 
 		initializePosts();
 	});
@@ -80,34 +82,25 @@ function initializePosts(){
 	// console.log(posts);
 }
 
-/* testing
-function submit (){
-	$("#submitPost").click(function(){
-		var postBody = $("#body").val().trim();
-		newPostCreated(postBody);
-		console.log(newPostCreated);
-	});
-} 
-*/
+
+
 
 function movement (){
 tlPost = new TimelineLite();
 
 	el = $(".mdl-card");
 
-	tlPost.staggerTo(el, 1, {top:200}, 0.25); 
+	//tlPost.staggerTo(el, 1, {top:200}, 0.25); 
 
 	$("#submitPost").click(function(){
-		if (tlPost.progress() >1){
-			tlPost.staggerTo(el, 1, {top:200}, 0.25);
-		}
-		else{
-			tlPost.restart();
-		}
+	
+	tlPost.staggerTo(el, 1, {top:200}, 0.25);
+		
 
 	});
 
 }	
+
 
 function newPostCreated(post) {
 	movement();
