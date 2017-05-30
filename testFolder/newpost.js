@@ -60,9 +60,11 @@ In_userid: 11
 
 //grab posts from database
 function getPosts(sidebar){
+
 	$.get("/post_generalpost", function(data){
 		console.log(data);
 		res.json(data);
+
 		initializePosts();
 	});
 
@@ -81,7 +83,7 @@ function initializePosts(){
 		postArr.push(newPostCreated(posts[i]));
 	}
 	postContainer.append(postArr);
-	console.log(posts);
+	// console.log(posts);
 }
 
 initializePosts();
@@ -144,7 +146,7 @@ function newPostCreated(post) {
 	newPostPanel.append(newPostPanelBody);
 
 	newPostPanel.data(posts);
-	console.log(newPostPanel);
+	// console.log(newPostPanel);
 	return newPostPanel;
 	
 }

@@ -1,27 +1,31 @@
 
 <div class="grid-centre">
             
-            <div class="mdl-grid" >
+            <div class="mdl-grid">
                 <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet graybox">
 
                     <form id="postForm" action="#" >
+
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                             <input class="mdl-textfield__input" type="text" id="body">
                             <label class="mdl-textfield__label" for="body">Tell your friends...</label>
                         </div>
+                        
                         <button id="submitPost" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored
                         mdl-js-ripple-effect
                         ">
                             <i class="material-icons">add</i>
                         </button>
+
                     </form>
+
 
                 </div>
 
             </div>
-            <!-- dynamic graph  -->
-            
-            <div id="graph">
+
+
+    <div id="graph"> <!-- dynamic graph  -->
 
   <h1 id="main-headers">Track your Coin</h1>
   
@@ -29,13 +33,13 @@
     <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-phone">
     </div>
       <div class="mdl-cell mdl-cell--5-col mdl-cell--5-col-tablet mdl-cell--1-phone">
-      <h2 id="main-headers">Bitcoin</h2>
-      {{#each stocks}}
+        <h2 id="main-headers">Bitcoin</h2>
+          {{#each stocks}}
            {{> stocks/stocks}}
          {{/each}}
-    </div>
+      </div>
   </div>
-</div>
+
 
         </div> <!--close div id graph-->
        
@@ -43,15 +47,14 @@
         
 
 
-
-<!-- sidebar right -->
-        <div class="grid-right">
+<div class="grid-right">
 
 
 <!--posts container -->
-            <div id="postDiv" class="mdl-card__actions">
+    <div id="postDiv">
 
-                <div class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--2-col-tablet mdl-shadow--2dp">
+        <div class="mdl-card__actions">
+            <div class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--2-col-tablet mdl-shadow--2dp">
                     <div class="mdl-card__title">
                       <h1 class="mdl-card__title-text" 
                       id="timestamp">{{{User name}}} {{{post time}}}</h1>
@@ -66,7 +69,8 @@
                         <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">share</i></button>
                     </div>
                 </div>
-           
+            </div>
+            
 
             <div class="mdl-card__actions">
                 <div class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--2-col-tablet mdl-shadow--2dp">
@@ -83,6 +87,7 @@
                         <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">share</i></button>
                     </div>
                 </div>
+            </div>
             
 
             <div class="mdl-card__actions">
@@ -102,3 +107,7 @@
                     </div>
                 </div>
             </div>
+
+        </div>
+
+    </div>

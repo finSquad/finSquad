@@ -18,14 +18,16 @@ $(form).on("#submitPost", function(event){
 		body: userPost.val().trim()
 	}
 	
-	console.log(newPost);
+	// console.log(newPost);
 	submitPost(newPost);
 
 });
 
 function submitPost(post){
+
 	$.post("/post_generalpost", post, function(){
 		console.log(post);
+
 	});
 }
 

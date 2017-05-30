@@ -1,6 +1,7 @@
 // DEPENDENCIES
 // We require express so we can display to HTML
 
+
 var request = require("request")
 var path = require("path"); 
 
@@ -11,16 +12,18 @@ var router = express.Router();
 var dbManager = require("../models/dbManager.js");
 
 router.get("/", function(req, res){
-    res.sendFile(path.join(__dirname,"../public/assets/graphtest.html")); 
+    res.sendFile(path.join(__dirname,"../public/assets/graphtest.html"));
+    // USE HANDLEBARS HERE TO RENDER PAGE 
+    // POPULATES THE FRONT PAGE WITH POSTS
 }); 
 
 router.get("/tblcurrency", function(req,res){
     dbManager.getAll_tbl_currency(function(tableInfo){
-        
         res.json(tableInfo); 
+        // console.log(tableInfo)
     });
-    
 });
+
 //NEEDS TO BE WORKED ON. Will post to tblgeneralpost. 
 router.post("/post_generalpost", function(req, res){
 	dbManager.addToGeneralPost(); 
@@ -68,7 +71,6 @@ router.get("/api/stocks?", function(req, res) {
 
 router.post("/", function(req, res) {
 
-   
     var newStock = req.body;
     db.Stock.create({
         currency: newStock.currency,
