@@ -28,7 +28,6 @@ CREATE TABLE IF NOT EXISTS `facefin_db`.`tblcurrency` (
   `USDprice` FLOAT(10,2) NULL DEFAULT NULL,
   `BTCprice` FLOAT(10,5) NULL DEFAULT NULL,
   `moment_tstamp` VARCHAR( 255 ) NOT NULL,
-  `tstamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -88,4 +87,6 @@ SELECT * FROM tblcurrency;
 SELECT * FROM tblpost;
 SELECT * FROM tblgeneralpost;
 SELECT * FROM tbluser;
+
+
 
