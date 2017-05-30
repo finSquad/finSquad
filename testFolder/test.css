@@ -1,0 +1,54 @@
+body {
+    height: 100%;
+}
+
+.grid-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-areas: "top    top    top" "left   center right" "bottom bottom bottom";
+    grid-template-columns: 200px auto 300px;
+    grid-template-rows: 100px auto 150px;
+    grid-gap: 10px 10px;
+}
+
+.grid-top {
+    grid-area: top;
+    background: #ddeaff;
+}
+
+.grid-bottom {
+    grid-area: bottom;
+    background: #ddeaff;
+}
+
+.grid-left {
+    grid-area: left;
+    background: #ddeaff;
+}
+
+.grid-right {
+    grid-area: right;
+    background: #ddeaff;
+}
+
+.grid-centre {
+    grid-area: center;
+}
+
+.mdl-grid,
+#graph {
+    overflow: auto;
+    background: #ddeaff;
+}
+
+.mdl-card__actions {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.mdl-card__actions > .mdl-button--icon {
+    margin-right: 5px;
+    margin-left: 5px;
+}

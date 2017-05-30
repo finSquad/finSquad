@@ -17,6 +17,11 @@ CREATE SCHEMA IF NOT EXISTS `facefin_db` ;
 -- ----------------------------------------------------------------------------
 -- Table facefin_db.tblcurrency
 -- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS 'facefin_db'.'tblgeneralpost'(
+  'id' INTEGER AUTO_INCREMENT PRIMARY KEY  NOT NULL,
+  'general_post' VARCHAR(100) NOT NULL, 
+  'date_created'  timestamp NOT NULL DEFAULT current_timestamp); 
+
 CREATE TABLE IF NOT EXISTS `facefin_db`.`tblcurrency` (
   `id` INT(11) AUTO_INCREMENT NOT NULL ,
   `currencyType` VARCHAR(45) NOT NULL DEFAULT 'USD' COMMENT 'default current is USD but it can be different',
