@@ -48,7 +48,7 @@ var posts;
 //grab posts from database
 function getPosts(sidebar){
 	$.get("/", function(data){
-		console.log(data);
+		// console.log(data);
 
 		initializePosts();
 	});
@@ -68,7 +68,7 @@ function initializePosts(){
 		postArr.push(newPostCreated(posts[i]));
 	}
 	postContainer.append(postArr);
-	console.log(posts);
+	// console.log(posts);
 }
 
 /* testing
@@ -121,7 +121,7 @@ function newPostCreated(post) {
 	newPostPanel.append(newPostPanelBody);
 
 	newPostPanel.data(posts);
-	console.log(newPostPanel);
+	// console.log(newPostPanel);
 	return newPostPanel;
 
 }
