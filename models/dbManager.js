@@ -22,16 +22,7 @@ sqlConn.connect(function(err){
 	console.log("sql connection is :" + sqlConn.threadId); 
 }); 
 
-// Create dbManager to manage database. 
 var dbManager = {
-	/*
-	getAllFriendsAndPost: function(){
-		// query goes here
-	}
-	addFriend: function(){
-
-	}
-	*/
 	getAll_tbl_currency: function(CB){
 		var query = "SELECT * FROM tblcurrency;";
 		sqlConn.query(query, function(err ,result){
@@ -56,20 +47,22 @@ var dbManager = {
 		}); 
 	},
 	// NEEDS TO BE TESTED. 
-	addToGeneralPost: function(general_post){
-		var query = "INSERT INTO tblgeneralpost(general_post) VALUES(?);" 
-		sqlConn.query(query, [general_post], function(err, result){ 
+	addToGeneralPost: function(general_post, moment_tstamp, cb){
+		var query = "INSERT INTO tblgeneralpost(general_post, date_created) VALUES(?, ?);" 
+		sqlConn.query(query, [general_post, moment_tstamp], function(err, result){ 
 			if(err){
-				console.log(err); 
+				// console.log(err); 
+				cb(); 
 			}
 			else{
-				// console.log(result); 
+				// console.log(result);
+				cb(); 
 			}
 		}); 
 	},
 	// WORKS
 	grabAllGeneralPost: function(CB){
-		var query = "SELECT * FROM tblgeneralpost"; 
+		var query = "SELECT * FROM tblgeneralpost ORDER BY id DESC"; 
 		sqlConn.query(query, function(err, result){
 			if(err){
 				// console.log(err);

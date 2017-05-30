@@ -1,82 +1,74 @@
-<div class="grid-container">
-        <!-- add navbar with fixed left van menu -->
-        <div class="grid-top">
-            Top
-        </div>
-        <!-- close top div -->
-        <div class="grid-left">Left</div>
-        <!-- Page center -->
-        <div class="grid-centre">
-            <!-- FORM need to incorperate local stroage -->
-            <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet graybox">
-                    <form id="postForm" action="#">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="body">
-                            <label class="mdl-textfield__label" for="body">Tell your friends...</label>
-                        </div>
-                        <button id="submitPost" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored
-                        mdl-js-ripple-effect
-                        ">
-                            <i class="material-icons">add</i>
-                        </button>
-                    </form>
-                </div>
-            </div>
+<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--6-phone">
+    <h1 id="main-headers">Track your Coin</h1>
+</div>
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-phone">
+    </div>
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--6-phone">
+        <div id="graph">
+            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option1">
+                <input type="radio" id="option1" name="time" class="mdl-radio__button" value="1 Year">
+                <span class="mdl-radio__label">1 Year</span>
+            </label>
+            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option2">
+                <input type="radio" id="option2" name="time" class="mdl-radio__button" value="6 Months">
+                <span class=" mdl-radio__label ">6 Months</span>
+            </label>
+            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect " for="option3">
+                <input type="radio" id="option3" name="time" class="mdl-radio__button" value="3 Months">
+                <span class="mdl-radio__label">3 Months</span>
+            </label>
+            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option4">
+                <input type="radio" id="option4" name="time" class="mdl-radio__button" value="1 Month">
+                <span class="mdl-radio__label">1 Month</span>
+            </label>
+            <br>
+            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option5">
+                <input type="radio" id="option5" name="time" class="mdl-radio__button" value="1 Week">
+                <span class="mdl-radio__label">1 Week</span>
+            </label>
+            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option6">
+                <input type="radio" id="option6" name="time" class="mdl-radio__button" value="1 Day">
+                <span class="mdl-radio__label">1 Day</span>
+            </label>
+            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option7">
+                <input type="radio" id="option7" name="time" class="mdl-radio__button" value="3 Hours">
+                <span class="mdl-radio__label">3 Hours</span>
+            </label>
+            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option8">
+                <input type="radio" id="option8" name="time" class="mdl-radio__button" value="1 Hour">
+                <span class="mdl-radio__label">1 Hour</span>
+            </label>
             <!-- dynamic graph  -->
-            <div id="graph"></div>
-        </div>
-        <!-- close center div -->
-        <!-- sidebar right -->
-        <div class="grid-right">
-            <!--posts container -->
-            <div id="postDiv" class="mdl-card__actions">
-                <div class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--2-col-tablet mdl-shadow--2dp">
-                    <div class="mdl-card__title">
-                        <h1 class="mdl-card__title-text" id="timestamp">{{{User name}}} {{{post time}}}</h1>
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <p id="newPost">{{{post body}}}</p>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Visit Profile</a>
-                        <div class="mdl-layout-spacer"></div>
-                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">favorite</i></button>
-                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">share</i></button>
-                    </div>
-                </div>
+            <div id="chart_div" style="width: 450px; height: 250px">
             </div>
-            <div class="mdl-card__actions">
-                <div class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--2-col-tablet mdl-shadow--2dp">
-                    <div class="mdl-card__title">
-                        <h1 class="mdl-card__title-text" id="timestamp">{{{User name}}} {{{post time}}}</h1>
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <p id="newPost">{{{post body}}}</p>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Visit Profile</a>
-                        <div class="mdl-layout-spacer"></div>
-                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">favorite</i></button>
-                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">share</i></button>
-                    </div>
+
+            <h2 id="main-headers">Bitcoin</h2>
+            <div class="wide-card mdl-card mdl-shadow--8dp">
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text"></h2>
                 </div>
-            </div>
-            <div class="mdl-card__actions">
-                <div class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--2-col-tablet mdl-shadow--2dp">
-                    <div class="mdl-card__title">
-                        <h1 class="mdl-card__title-text" id="timestamp">{{{User name}}} {{{post time}}}</h1>
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <p id="newPost">{{{post body}}}</p>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Visit Profile</a>
-                        <div class="mdl-layout-spacer"></div>
-                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">favorite</i></button>
-                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">share</i></button>
-                    </div>
+                <div class="mdl-card__supporting-text" id="currency">
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <br>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="mdl-cell mdl-cell--5-col mdl-cell--3-col-tablet graybox">
+        <form id="postForm" method="POST" action="/post_generalpost">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="body" name="post">
+                <label class="mdl-textfield__label" for="body">Tell your friends...</label>
+            </div>
+            <button id="submitPost" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect">
+                <i class="material-icons">add</i>
+            </button>
+        </form>
+
+          {{> posts/posts}}
+
+    </div>
+</div>

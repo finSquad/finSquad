@@ -1,111 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <script src="https://code.jquery.com/jquery.js"></script>
-	    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <script src="https://d3js.org/d3.v4.min.js"></script>
-		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-yellow.min.css"/>
-		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="test.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenLite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TimelineLite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/CSSPlugin.min.js"></script>
-		<link rel="stylesheet" href="/assets/css/style.css" type="text/css"/>
+	<link rel="stylesheet" href="/assets/css/style.css" type="text/css"/>
 		<title>Title</title>
 	</head>
 	<body>
+   <div class="mdl-layout mdl-js-layout mdl-layout--drawer mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">
+                    <div id="usd-price">
+                    </div>
 
-    <div class="grid-container">
-        <!-- add navbar with fixed left van menu -->
-        <div class="grid-top">
-            Top
+                    <div id="btc-price">       
+                    </div>
+                    <div id="changing-price"></div>
+                </span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation -->
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="/">Home</a>
+                    <a class="mdl-navigation__link" href="/">Link</a>
+                </nav>
+            </div>
+        </header>
+        <!---        DRAWER         -->
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Title</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="/">Home</a>
+                <a class="mdl-navigation__link" href="/">Link</a>
+            </nav>
         </div>
-        <!-- close top div -->
-        <div class="grid-left">Left</div>
-        <!-- Page center -->
-        <div class="grid-centre">
-            <!-- FORM need to incorperate local stroage -->
-            <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet graybox">
-                    <form id="postForm" action="#">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="body">
-                            <label class="mdl-textfield__label" for="body">Tell your friends...</label>
-                        </div>
-                        <button id="submitPost" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect">
-                            <i class="material-icons">add</i>
-                        </button>
-                    </form>
-                </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                {{{ body }}}
             </div>
-            <!-- dynamic graph  -->
-        <div id="graph"></div>
-        </div>
-        <!-- close center div -->
-        <!-- sidebar right -->
-        <div class="grid-right">
-            <!--posts container -->
-            <div id="postDiv" class="mdl-card__actions">
-                <div class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--2-col-tablet mdl-shadow--2dp">
-                    <div class="mdl-card__title">
-                        <h1 class="mdl-card__title-text" id="timestamp">{{{User name}}} {{{post time}}}</h1>
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <p id="newPost">{{{post body}}}</p>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Visit Profile</a>
-                        <div class="mdl-layout-spacer"></div>
-                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">favorite</i></button>
-                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">share</i></button>
-                    </div>
-                </div>
-            </div>
-            <div class="mdl-card__actions">
-                <div class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--2-col-tablet mdl-shadow--2dp">
-                    <div class="mdl-card__title">
-                        <h1 class="mdl-card__title-text" id="timestamp">{{{User name}}} {{{post time}}}</h1>
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <p id="newPost">{{{post body}}}</p>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Visit Profile</a>
-                        <div class="mdl-layout-spacer"></div>
-                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">favorite</i></button>
-                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">share</i></button>
-                    </div>
-                </div>
-            </div>
-            <div class="mdl-card__actions">
-                <div class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--2-col-tablet mdl-shadow--2dp">
-                    <div class="mdl-card__title">
-                        <h1 class="mdl-card__title-text" id="timestamp">{{{User name}}} {{{post time}}}</h1>
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <p id="newPost">{{{post body}}}</p>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Visit Profile</a>
-                        <div class="mdl-layout-spacer"></div>
-                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">favorite</i></button>
-                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">share</i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </main>
     </div>
-    <script type="text/javascript" href="../../public/assets/javascript/stockgraph.js"></script>
-	</body>
-    <script type="text/javascript" src="newpost.js">
-</script>
-<script type="text/javascript" src="submitpost.js">
-</script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/assets/javascript/newpost.js"></script>
+    <script type="text/javascript" src="/assets/javascript/submitpost.js"></script>
+    <script type="text/javascript" src="/assets/javascript/stockgraph.js"></script>
+    </body>
 </html>
 
 

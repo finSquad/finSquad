@@ -20,7 +20,8 @@ CREATE SCHEMA IF NOT EXISTS `facefin_db` ;
 CREATE TABLE IF NOT EXISTS `facefin_db`.`tblgeneralpost`(
   `id` INTEGER AUTO_INCREMENT PRIMARY KEY  NOT NULL,
   `general_post` VARCHAR(100) NOT NULL, 
-  `date_created`  timestamp NOT NULL DEFAULT current_timestamp); 
+  `date_created` VARCHAR(100) NOT NULL);
+  
 
 CREATE TABLE IF NOT EXISTS `facefin_db`.`tblcurrency` (
   `id` INT(11) AUTO_INCREMENT NOT NULL ,
@@ -28,7 +29,6 @@ CREATE TABLE IF NOT EXISTS `facefin_db`.`tblcurrency` (
   `USDprice` FLOAT(10,2) NULL DEFAULT NULL,
   `BTCprice` FLOAT(10,5) NULL DEFAULT NULL,
   `moment_tstamp` VARCHAR( 255 ) NOT NULL,
-  `tstamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -88,6 +88,3 @@ SELECT * FROM tblcurrency;
 SELECT * FROM tblpost;
 SELECT * FROM tblgeneralpost;
 SELECT * FROM tbluser;
-
-
-

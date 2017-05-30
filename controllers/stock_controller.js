@@ -3,16 +3,24 @@
 var request = require("request")
 var path = require("path"); 
 var express = require("express");
+var moment = require("moment")
 // Router sets up 
 var router = express.Router();
 
 var dbManager = require("../models/dbManager.js");
 
+// router.get("/", function(req, res){
+//     res.sendFile(path.join(__dirname,"../public/assets/graphtest.html"));
+// }); 
+
 router.get("/", function(req, res){
-    res.sendFile(path.join(__dirname,"../public/assets/graphtest.html"));
-    // USE HANDLEBARS HERE TO RENDER PAGE 
-    // POPULATES THE FRONT PAGE WITH POSTS
-}); 
+    dbManager.grabAllGeneralPost(function(tableInfo){
+        // console.log(tableInfo)
+        var posts = {tblpost: tableInfo};
+        console.log(posts)
+        res.render("index", posts)
+    })
+})
 
 router.get("/tblcurrency", function(req,res){
     dbManager.getAll_tbl_currency(function(tableInfo){
@@ -23,7 +31,13 @@ router.get("/tblcurrency", function(req,res){
 
 //NEEDS TO BE WORKED ON. Will post to tblgeneralpost. 
 router.post("/post_generalpost", function(req, res){
-	dbManager.addToGeneralPost(); 
+    var moment_tstamp = moment().format("MMM-D-YYYY hh:mmA");
+    console.log(moment_tstamp)
+    var newPost = req.body.post;
+	dbManager.addToGeneralPost(newPost, moment_tstamp,function(){
+        res.redirect("/");
+    });
+        // res.json(newPost) 
 });
 // THIS ROUTER WORKS. Will Get all post from general post. 
 router.get("/get_all_general_post", function(req, res){
