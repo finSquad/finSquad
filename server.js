@@ -49,7 +49,7 @@ function bitCoinAjaxCall() {
         });
     });
 };
-setInterval(bitCoinAjaxCall, 60000);
+setInterval(bitCoinAjaxCall, 600000);
 
 
 
