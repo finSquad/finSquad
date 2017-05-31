@@ -10,18 +10,14 @@ var router = express.Router();
 
 var dbManager = require("../models/dbManager.js");
 
-<<<<<<< HEAD
+
 router.get("/", function(req,res){
    dbManager.grabAllGeneralPost(function(tableInfo){
        var tblcur = {tblpost: tableInfo};
        res.render("index", tblcur);
    });
 });
-=======
-router.get("/", function(req, res){
-    res.sendFile(path.join(__dirname,"../public/assets/graphtest.html")); 
-}); 
->>>>>>> parent of d278c02... fixed merge conflicts
+
 
 router.get("/tblcurrency", function(req,res){
     dbManager.getAll_tbl_currency(function(tableInfo){
