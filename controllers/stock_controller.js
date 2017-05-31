@@ -17,7 +17,7 @@ router.get("/", function(req, res){
     dbManager.grabAllGeneralPost(function(tableInfo){
         // console.log(tableInfo)
         var posts = {tblpost: tableInfo};
-        console.log(posts)
+        // console.log(posts)
         res.render("index", posts)
     })
 })
@@ -32,7 +32,7 @@ router.get("/tblcurrency", function(req,res){
 //NEEDS TO BE WORKED ON. Will post to tblgeneralpost. 
 router.post("/post_generalpost", function(req, res){
     var moment_tstamp = moment().format("MMM-D-YYYY hh:mmA");
-    console.log(moment_tstamp)
+    // console.log(moment_tstamp)
     var newPost = req.body.post;
 	dbManager.addToGeneralPost(newPost, moment_tstamp,function(){
         res.redirect("/");
