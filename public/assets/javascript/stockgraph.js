@@ -217,7 +217,7 @@ $(document).ready(function() {
                 placeholderPrice = BTCprice;
                 // console.log(BTCprice)
                 // console.log(placeholderPrice)
-                $("#changing-price").html(`<div style="color: red">${placeholderPrice}<i class="material-icons">trending_down</i></div>`)
+                $("#changing-price").html(`<div style="color: red">${placeholderPrice}<i class="material-icons" style="color:red">trending_down</i></div>`)
 
             }
             // console.log(BTCprice)

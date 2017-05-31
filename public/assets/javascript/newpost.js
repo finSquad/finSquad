@@ -55,7 +55,7 @@ $(document).ready(function() {
     // postContainer
     function initializePosts() {
         postContainer.empty();
-        console.log(posts)
+        // console.log(posts)
         var postArr = [];
         for (var i = 0; i < posts.length; i++) {
             postArr.push(newPostCreated(posts[i]));
