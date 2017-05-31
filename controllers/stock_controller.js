@@ -10,10 +10,6 @@ var router = express.Router();
 
 var dbManager = require("../models/dbManager.js");
 
-// router.get("/", function(req, res){
-//     res.sendFile(path.join(__dirname,"../public/assets/graphtest.html"));
-// }); 
-
 router.get("/", function(req, res) {
     dbManager.grabAllGeneralPost(function(tableInfo) {
         // console.log(tableInfo)
@@ -30,7 +26,7 @@ router.get("/tblcurrency", function(req, res) {
     });
 });
 
-//NEEDS TO BE WORKED ON. Will post to tblgeneralpost. 
+// Will post to tblgeneralpost. 
 router.post("/post_generalpost", function(req, res) {
     // Subtract 7 hours on server. 
     var moment_tstamp = moment().subtract(7, "Hours").format("YYYY-MM-DD+HH:mm:ss");
