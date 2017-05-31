@@ -12,12 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
-// app.use(express.static('/public'));
-// app.use(express.static('public/assets'));
 app.use(express.static(__dirname + '/public'));
-
-
-// app.use(express.static(__dirname + '/public'));
 
 // Allows us to overide PUT and GET methods
 app.use(methodOverride("_method"));
@@ -51,9 +46,7 @@ function bitCoinAjaxCall() {
         });
     });
 };
-setInterval(bitCoinAjaxCall, 6000000);
-
-// end of ajax call function 
+setInterval(bitCoinAjaxCall, 60000);
 
 app.listen(PORT, function() {
     console.log("App listening on PORT: " + PORT);
