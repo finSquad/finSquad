@@ -40,8 +40,8 @@ function bitCoinAjaxCall() {
         // console.log(parsedBody.BTC);
         BTCprice = parsedBody.BTC;
         request("https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,ETH,EUR", function(err, res, body) {
-            var moment_tstamp = moment().format("YYYY-MM-DD+HH:mm:ss");
-            console.log(moment_tstamp)
+            var moment_tstamp = moment().subtract(7, "Hours").format("YYYY-MM-DD+HH:mm:ss");
+            // console.log(moment_tstamp)
             var parsedBody = JSON.parse(body);
             console.log(parsedBody.USD);
             USDprice = parsedBody.USD;
@@ -49,12 +49,7 @@ function bitCoinAjaxCall() {
         });
     });
 };
-setInterval(bitCoinAjaxCall, 600000);
-
-
-
-
-
+setInterval(bitCoinAjaxCall, 60000);
 
 // end of ajax call function 
 

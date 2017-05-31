@@ -25,7 +25,7 @@ router.get("/", function(req, res){
 router.get("/tblcurrency", function(req,res){
     dbManager.getAll_tbl_currency(function(tableInfo){
         res.json(tableInfo); 
-        // console.log(tableInfo)
+        console.log(tableInfo)
     });
 });
 
