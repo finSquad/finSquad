@@ -29,7 +29,7 @@ router.get("/tblcurrency", function(req, res) {
 // Will post to tblgeneralpost. 
 router.post("/post_generalpost", function(req, res) {
     // Subtract 7 hours on server. 
-    var moment_tstamp = moment().subtract(7, "Hours").format("MMM-D-YYY hh:mmA");
+    var moment_tstamp = moment().subtract(7, "Hours").format("MMM-D-YYYY hh:mmA");
     // var moment_tstamp = moment().format("MMM-D-YYYY hh:mmA");
     // console.log(moment_tstamp)
     var newPost = req.body.post;
