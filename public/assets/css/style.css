@@ -38,11 +38,14 @@ a, i{
     padding: 0 24px;
 }
 
-.ticker {
+.ticker, #placeholderprice {
     display: inline-block;
-    padding-bottom: 5px;
+    padding-bottom: 3px;
     padding-left: 15px;
 }
+
+
+
 
 .grid-container {
     width: 100%;
