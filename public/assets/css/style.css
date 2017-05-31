@@ -32,15 +32,31 @@ body {
     background: #ddeaff;
 }
 
-.grid-centre {
+.grid-center {
     grid-area: center;
 }
 
+h1 {
+    text-align: center;
+    color: #30D138;
+}
+
+/***************************************************************/
+/***********************      GRAPH       **********************/
+/***************************************************************/
 .mdl-grid,
-#graph {
-    width: 50%
+#graph, {
+    width: 50%;
+    /*overflow: auto;*/
     background: #ddeaff;
 }
+
+/*.chart-div {
+    width: 400px;
+    height: 500px;
+}*/
+/***************************************************************/
+/***************************************************************/
 
 .mdl-card__actions {
     display: flex;
