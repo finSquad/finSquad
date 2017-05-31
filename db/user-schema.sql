@@ -89,5 +89,3 @@ SELECT * FROM tblpost;
 SELECT * FROM tblgeneralpost;
 SELECT * FROM tbluser;
 
-
-
