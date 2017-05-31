@@ -1,7 +1,6 @@
 // DEPENDENCIES
 // We require express so we can display to HTML
 
-
 var request = require("request")
 var path = require("path"); 
 
@@ -11,20 +10,26 @@ var router = express.Router();
 
 var dbManager = require("../models/dbManager.js");
 
+<<<<<<< HEAD
 router.get("/", function(req,res){
    dbManager.grabAllGeneralPost(function(tableInfo){
        var tblcur = {tblpost: tableInfo};
        res.render("index", tblcur);
    });
 });
+=======
+router.get("/", function(req, res){
+    res.sendFile(path.join(__dirname,"../public/assets/graphtest.html")); 
+}); 
+>>>>>>> parent of d278c02... fixed merge conflicts
 
 router.get("/tblcurrency", function(req,res){
     dbManager.getAll_tbl_currency(function(tableInfo){
+        
         res.json(tableInfo); 
-        // console.log(tableInfo)
     });
+    
 });
-
 //NEEDS TO BE WORKED ON. Will post to tblgeneralpost. 
 router.post("/post_generalpost", function(req, res){
     var newPost = req.body.post;
@@ -77,6 +82,7 @@ router.get("/api/stocks?", function(req, res) {
 
 router.post("/", function(req, res) {
 
+   
     var newStock = req.body;
     db.Stock.create({
         currency: newStock.currency,

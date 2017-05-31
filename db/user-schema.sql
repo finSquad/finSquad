@@ -17,10 +17,10 @@ CREATE SCHEMA IF NOT EXISTS `facefin_db` ;
 -- ----------------------------------------------------------------------------
 -- Table facefin_db.tblcurrency
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `facefin_db`.`tblgeneralpost`(
-  `id` INTEGER AUTO_INCREMENT PRIMARY KEY  NOT NULL,
-  `general_post` VARCHAR(100) NOT NULL, 
-  `date_created`  timestamp NOT NULL DEFAULT current_timestamp); 
+CREATE TABLE IF NOT EXISTS 'facefin_db'.'tblgeneralpost'(
+  'id' INTEGER AUTO_INCREMENT PRIMARY KEY  NOT NULL,
+  'general_post' VARCHAR(100) NOT NULL, 
+  'date_created'  timestamp NOT NULL DEFAULT current_timestamp); 
 
 CREATE TABLE IF NOT EXISTS `facefin_db`.`tblcurrency` (
   `id` INT(11) AUTO_INCREMENT NOT NULL ,
@@ -75,7 +75,6 @@ CREATE TABLE IF NOT EXISTS `facefin_db`.`tbluser` (
   `userAddress` VARCHAR(45) NOT NULL COMMENT '\'address of the user\'',
   `userEmail` VARCHAR(45) NOT NULL COMMENT '\'userEmail is must and will be used to login\'',
   `userPwd` VARCHAR(45) NOT NULL COMMENT '\'userEmail is must and will be used to login\'',
-  `userURL` VARCHAR(60) NOT NULL COMMENT '\'userURL is must and will be used for referencing API and URLs\'',
   `tstamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'time stamp for creating of user ',
   PRIMARY KEY (`userId`))
 ENGINE = InnoDB
@@ -85,9 +84,3 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 USE facefin_db;
 SELECT * FROM tblcurrency;
-SELECT * FROM tblpost;
-SELECT * FROM tblgeneralpost;
-SELECT * FROM tbluser;
-
-
-

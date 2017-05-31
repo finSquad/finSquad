@@ -8,6 +8,7 @@ var PORT = process.env.PORT || 8080;
 var dbManager = require("./models/dbManager.js");
 var moment = require("moment")
 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
@@ -32,12 +33,17 @@ function bitCoinAjaxCall() {
     var USDprice;
 
     request("https://min-api.cryptocompare.com/data/price?fsym=USD&tsyms=BTC,ETH,EUR", function(err, res, body) {
+        //console.log(res);
+        //console.log(body); 
         var parsedBody = JSON.parse(body);
-        // console.log(parsedBody.BTC);
+        console.log(parsedBody.BTC);
         BTCprice = parsedBody.BTC;
+
         request("https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,ETH,EUR", function(err, res, body) {
-            var moment_tstamp = moment().format("YYYY-MM-DD+HH:mm:ss");
+            var moment_tstamp = moment().format("YYYY-MM-DD+hh:mm:ss");
             console.log(moment_tstamp)
+                //console.log(res);
+                //console.log(body);
             var parsedBody = JSON.parse(body);
             console.log(parsedBody.USD);
             USDprice = parsedBody.USD;
@@ -48,6 +54,7 @@ function bitCoinAjaxCall() {
 
 setInterval(bitCoinAjaxCall, 60000);
 // end of ajax call function 
+
 
 app.listen(PORT, function() {
     console.log("App listening on PORT: " + PORT);

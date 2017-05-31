@@ -2,9 +2,8 @@
 <div class="grid-centre">
             
             
+            <div id="graph">
 
-
-    <div id="graph"> <!-- dynamic graph  -->
 
   <h1 id="main-headers">Track your Coin</h1>
   
@@ -12,13 +11,13 @@
     <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-phone">
     </div>
       <div class="mdl-cell mdl-cell--5-col mdl-cell--5-col-tablet mdl-cell--1-phone">
-        <h2 id="main-headers">Bitcoin</h2>
-          {{#each stocks}}
+      <h2 id="main-headers">Bitcoin</h2>
+      {{#each stocks}}
            {{> stocks/stocks}}
          {{/each}}
-      </div>
+    </div>
   </div>
-
+</div>
 
         </div> <!--close div id graph-->
        
@@ -26,11 +25,14 @@
         
 
 
-<div class="grid-right">
+
+<!-- sidebar right -->
+        <div class="grid-right">
 
 
 <!--posts container -->
-    <div id="postDiv">
+            <div id="postDiv">
+
 
       <div class="mdl-grid">
                 <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet graybox">
@@ -51,9 +53,7 @@
                     </form>
 
 
-                </div>
 
-            </div>
 
 {{#each tblpost}}
 
@@ -74,6 +74,7 @@
                     </div>
                 </div>
             </div>
+
 {{/each}}         
 
            
@@ -81,3 +82,4 @@
         </div>
 
     </div>
+

@@ -8,4 +8,5 @@ module.exports = function(sequelize, dataTypes) {
         timestamps: true
     })
     return Stock;
+
 }
