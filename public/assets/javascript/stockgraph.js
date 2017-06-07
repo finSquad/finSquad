@@ -212,12 +212,12 @@ $(document).ready(function() {
                 // console.log(BTCprice)
                 // console.log(placeholderPrice)
                 var percentageChange = (BTCprice)
-                $("#changing-price").html(`<i class="material-icons">trending_up</i><div id="placeholderprice" style="color: green">${placeholderPrice}</div>`)
+                $("#changing-price").html(`<i class="material-icons">trending_up</i><div id="placeholderprice" style="color: green">$${placeholderPrice}</div>`)
             } else if (BTCprice < placeholderPrice) {
                 placeholderPrice = BTCprice;
                 // console.log(BTCprice)
                 // console.log(placeholderPrice)
-                $("#changing-price").html(`<i class="material-icons" style="color:red">trending_down</i><div id="placeholderprice" style="color: red">${placeholderPrice}</div>`)
+                $("#changing-price").html(`<i class="material-icons" style="color:red">trending_down</i><div id="placeholderprice" style="color: red">$${placeholderPrice}</div>`)
 
             }
             // console.log(BTCprice)
