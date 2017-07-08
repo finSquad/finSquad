@@ -192,13 +192,13 @@ $(document).ready(function() {
     // UNCOMMENT THIS TO SEE THE PRICE OF BTC IN REAL TIME
     // ************************************************************************************
 
-    function priceUSD() {
-        $.get("https://min-api.cryptocompare.com/data/price?fsym=USD&tsyms=BTC,ETH,EUR", function(data) {
-            var USDprice = data.BTC;
-            // console.log(USDprice);
-            $("#usd-price").html(`USD/BTC: $${USDprice}<br>`)
-        });
-    }
+    // function priceUSD() {
+    //     $.get("https://min-api.cryptocompare.com/data/price?fsym=USD&tsyms=BTC,ETH,EUR", function(data) {
+    //         var USDprice = data.BTC;
+    //         // console.log(USDprice);
+    //         $("#usd-price").html(`USD/BTC: $${USDprice}<br>`)
+    //     });
+    // }
 
     var placeholderPrice = 0;
     var percentageChange = 0;
@@ -209,26 +209,17 @@ $(document).ready(function() {
             var BTCprice = data.USD;
             if (BTCprice > placeholderPrice) {
                 placeholderPrice = BTCprice;
-                // console.log(BTCprice)
-                // console.log(placeholderPrice)
                 var percentageChange = (BTCprice)
                 $("#changing-price").html(`<i class="material-icons">trending_up</i><div id="placeholderprice" style="color: green">$${placeholderPrice}</div>`)
             } else if (BTCprice < placeholderPrice) {
                 placeholderPrice = BTCprice;
-                // console.log(BTCprice)
-                // console.log(placeholderPrice)
                 $("#changing-price").html(`<i class="material-icons" style="color:red">trending_down</i><div id="placeholderprice" style="color: red">$${placeholderPrice}</div>`)
-
             }
-            // console.log(BTCprice)
             $("#btc-price").html(`BTC/USD: $${BTCprice}`)
         });
     }
-    priceUSD();
     priceBTC();
-    setInterval(priceUSD, 10000);
     setInterval(priceBTC, 10000);
-
 
     // ************************************************************************************
     // END
