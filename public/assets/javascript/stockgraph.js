@@ -5,7 +5,7 @@ $(document).ready(function() {
     function get_tblcurrency() {
         $.get("/tblcurrency", function(data) {
             // Grabbing data from out database
-            // console.log(data)
+            console.log(data)
             createChartPoints(data);
             // Updates the graph in real time so long as we are on the default viewing
             if (defaultView === true) {
@@ -28,6 +28,8 @@ $(document).ready(function() {
             var date = dbTime[0].split("-");
             var time = dbTime[1].split(":");
             var timeArray = date.concat(time);
+            // timeArray is in the formate that Google Material Chart accepts: YYYY, MM, DD, HH, mm, SS
+            // console.log(timeArray)
             var chartPoint = {
                 time: timeArray,
                 price: data[i].USDprice

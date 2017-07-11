@@ -1,6 +1,6 @@
 # fin$quad
 
-fin$quad is a web based application that tracks the price of Bitcoin in real time by storing the price of BTC into a database along with a timestamp. The data is then rendered into a graph that updates in real time. The original conception was meant to be a sort of trading hub or social media application where friends could watch each other's favorite stocks and leave comments or suggestions about what stock indecies to trade and why. 
+fin$quad is a web based application that tracks the price of Bitcoin in real time by storing the price of BTC into a database along with a timestamp. The data is then rendered into a graph that updates in real time. The original conception was meant to be a sort of trading hub or social media application where friends could watch each other's favorite stocks and leave comments or suggestions about what stock indices to trade and why. 
 
 ## Getting Started
 
