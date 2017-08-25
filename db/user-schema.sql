@@ -23,11 +23,24 @@ CREATE TABLE IF NOT EXISTS `facefin_db`.`tblgeneralpost`(
   `date_created` VARCHAR(100) NOT NULL);
   
 
-CREATE TABLE IF NOT EXISTS `facefin_db`.`tblcurrency` (
+CREATE TABLE IF NOT EXISTS `facefin_db`.`tbltcurrency` (
   `id` INT(11) AUTO_INCREMENT NOT NULL ,
   `currencyType` VARCHAR(45) NOT NULL DEFAULT 'USD' COMMENT 'default current is USD but it can be different',
   `USDprice` FLOAT(10,2) NULL DEFAULT NULL,
   `BTCprice` FLOAT(10,5) NULL DEFAULT NULL,
+  `moment_tstamp` VARCHAR( 255 ) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COMMENT = 'This stand alone table to store curreny data from ajax call';
+
+CREATE TABLE IF NOT EXISTS `copbot_db`.`tbltcurrency` (
+  `id` INT(11) AUTO_INCREMENT NOT NULL ,
+  `currencyType` VARCHAR(45) NOT NULL DEFAULT 'USD' COMMENT 'default current is USD but it can be different',
+  `USDprice` FLOAT(10,2) NULL DEFAULT NULL,
+  `BTCprice` FLOAT(10,5) NULL DEFAULT NULL,
+  `IOTAprice` FLOAT(10,5) NULL DEFAULT NULL,
+  `XMRprice` FLOAT(10,5) NULL DEFAULT NULL,
   `moment_tstamp` VARCHAR( 255 ) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
